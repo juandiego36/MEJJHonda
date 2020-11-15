@@ -1,0 +1,492 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="MejjHondaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="MEJJ_Articulo">
+          <Key>
+            <PropertyRef Name="IdArticulo" />
+          </Key>
+          <Property Name="IdArticulo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="200" />
+          <Property Name="Modelo" Type="nvarchar" MaxLength="200" />
+          <Property Name="Precio" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Color" Type="nvarchar" MaxLength="50" />
+          <Property Name="Tamanio" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="MEJJ_Cliente">
+          <Key>
+            <PropertyRef Name="IdCliente" />
+          </Key>
+          <Property Name="IdCliente" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Cedula" Type="nvarchar" MaxLength="22" />
+          <Property Name="Telefono" Type="nvarchar" MaxLength="50" />
+          <Property Name="Direccion" Type="nvarchar" MaxLength="200" />
+          <Property Name="DiasCredito" Type="int" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="200" />
+          <Property Name="Mail" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="MEJJ_Empleado">
+          <Key>
+            <PropertyRef Name="IdEmpleado" />
+          </Key>
+          <Property Name="IdEmpleado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="200" />
+          <Property Name="Cedula" Type="nvarchar" MaxLength="22" />
+          <Property Name="Mail" Type="nvarchar" MaxLength="100" />
+          <Property Name="Telefono" Type="nvarchar" MaxLength="50" />
+          <Property Name="Direccion" Type="nvarchar" MaxLength="200" />
+          <Property Name="IdRol" Type="int" />
+          <Property Name="Contraseña" Type="nvarchar" MaxLength="22" />
+        </EntityType>
+        <EntityType Name="MEJJ_FacturaDeta">
+          <Key>
+            <PropertyRef Name="IdFacturaD" />
+          </Key>
+          <Property Name="IdFacturaD" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdFacturaE" Type="int" Nullable="false" />
+          <Property Name="IdArticulo" Type="int" Nullable="false" />
+          <Property Name="Cantidad" Type="int" Nullable="false" />
+          <Property Name="PorcentajeDesc" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="SubTotal" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Descuento" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Impuesto" Type="decimal" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="MEJJ_FacturaEnca">
+          <Key>
+            <PropertyRef Name="IdFacturaE" />
+          </Key>
+          <Property Name="IdFacturaE" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdEmpleado" Type="int" Nullable="false" />
+          <Property Name="IdCliente" Type="int" Nullable="false" />
+          <Property Name="Tipo" Type="varchar" MaxLength="50" />
+          <Property Name="Fecha" Type="date" />
+          <Property Name="FechaIng" Type="date" />
+          <Property Name="Observacion" Type="varchar" MaxLength="200" />
+          <Property Name="MedioPago" Type="varchar" MaxLength="100" />
+          <Property Name="TipoCambio" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Subtotal" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Descuento" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Impuesto" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="IdMoneda" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MEJJ_Moneda">
+          <Key>
+            <PropertyRef Name="IdMoneda" />
+          </Key>
+          <Property Name="IdMoneda" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Codigo" Type="nvarchar" MaxLength="3" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="22" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <Association Name="FK__MEJJ_Fact__IdArt__1AD3FDA4">
+          <End Role="MEJJ_Articulo" Type="Self.MEJJ_Articulo" Multiplicity="1" />
+          <End Role="MEJJ_FacturaDeta" Type="Self.MEJJ_FacturaDeta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MEJJ_Articulo">
+              <PropertyRef Name="IdArticulo" />
+            </Principal>
+            <Dependent Role="MEJJ_FacturaDeta">
+              <PropertyRef Name="IdArticulo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MEJJ_Fact__IdCli__17036CC0">
+          <End Role="MEJJ_Cliente" Type="Self.MEJJ_Cliente" Multiplicity="1" />
+          <End Role="MEJJ_FacturaEnca" Type="Self.MEJJ_FacturaEnca" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MEJJ_Cliente">
+              <PropertyRef Name="IdCliente" />
+            </Principal>
+            <Dependent Role="MEJJ_FacturaEnca">
+              <PropertyRef Name="IdCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MEJJ_Fact__IdEmp__160F4887">
+          <End Role="MEJJ_Empleado" Type="Self.MEJJ_Empleado" Multiplicity="1" />
+          <End Role="MEJJ_FacturaEnca" Type="Self.MEJJ_FacturaEnca" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MEJJ_Empleado">
+              <PropertyRef Name="IdEmpleado" />
+            </Principal>
+            <Dependent Role="MEJJ_FacturaEnca">
+              <PropertyRef Name="IdEmpleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MEJJ_Fact__IdFac__19DFD96B">
+          <End Role="MEJJ_FacturaEnca" Type="Self.MEJJ_FacturaEnca" Multiplicity="1" />
+          <End Role="MEJJ_FacturaDeta" Type="Self.MEJJ_FacturaDeta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MEJJ_FacturaEnca">
+              <PropertyRef Name="IdFacturaE" />
+            </Principal>
+            <Dependent Role="MEJJ_FacturaDeta">
+              <PropertyRef Name="IdFacturaE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MEJJ_Fact__IdMon__151B244E">
+          <End Role="MEJJ_Moneda" Type="Self.MEJJ_Moneda" Multiplicity="1" />
+          <End Role="MEJJ_FacturaEnca" Type="Self.MEJJ_FacturaEnca" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MEJJ_Moneda">
+              <PropertyRef Name="IdMoneda" />
+            </Principal>
+            <Dependent Role="MEJJ_FacturaEnca">
+              <PropertyRef Name="IdMoneda" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MejjHondaModelStoreContainer">
+          <EntitySet Name="MEJJ_Articulo" EntityType="Self.MEJJ_Articulo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MEJJ_Cliente" EntityType="Self.MEJJ_Cliente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MEJJ_Empleado" EntityType="Self.MEJJ_Empleado" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MEJJ_FacturaDeta" EntityType="Self.MEJJ_FacturaDeta" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MEJJ_FacturaEnca" EntityType="Self.MEJJ_FacturaEnca" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MEJJ_Moneda" EntityType="Self.MEJJ_Moneda" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__MEJJ_Fact__IdArt__1AD3FDA4" Association="Self.FK__MEJJ_Fact__IdArt__1AD3FDA4">
+            <End Role="MEJJ_Articulo" EntitySet="MEJJ_Articulo" />
+            <End Role="MEJJ_FacturaDeta" EntitySet="MEJJ_FacturaDeta" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MEJJ_Fact__IdCli__17036CC0" Association="Self.FK__MEJJ_Fact__IdCli__17036CC0">
+            <End Role="MEJJ_Cliente" EntitySet="MEJJ_Cliente" />
+            <End Role="MEJJ_FacturaEnca" EntitySet="MEJJ_FacturaEnca" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MEJJ_Fact__IdEmp__160F4887" Association="Self.FK__MEJJ_Fact__IdEmp__160F4887">
+            <End Role="MEJJ_Empleado" EntitySet="MEJJ_Empleado" />
+            <End Role="MEJJ_FacturaEnca" EntitySet="MEJJ_FacturaEnca" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MEJJ_Fact__IdFac__19DFD96B" Association="Self.FK__MEJJ_Fact__IdFac__19DFD96B">
+            <End Role="MEJJ_FacturaEnca" EntitySet="MEJJ_FacturaEnca" />
+            <End Role="MEJJ_FacturaDeta" EntitySet="MEJJ_FacturaDeta" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MEJJ_Fact__IdMon__151B244E" Association="Self.FK__MEJJ_Fact__IdMon__151B244E">
+            <End Role="MEJJ_Moneda" EntitySet="MEJJ_Moneda" />
+            <End Role="MEJJ_FacturaEnca" EntitySet="MEJJ_FacturaEnca" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MejjHondaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="MEJJ_Articulo">
+          <Key>
+            <PropertyRef Name="IdArticulo" />
+          </Key>
+          <Property Name="IdArticulo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Modelo" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Precio" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Color" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Tamanio" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="MEJJ_FacturaDeta" Relationship="Self.FK__MEJJ_Fact__IdArt__1AD3FDA4" FromRole="MEJJ_Articulo" ToRole="MEJJ_FacturaDeta" />
+        </EntityType>
+        <EntityType Name="MEJJ_Cliente">
+          <Key>
+            <PropertyRef Name="IdCliente" />
+          </Key>
+          <Property Name="IdCliente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Cedula" Type="String" MaxLength="22" FixedLength="false" Unicode="true" />
+          <Property Name="Telefono" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Direccion" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="DiasCredito" Type="Int32" />
+          <Property Name="Nombre" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Mail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="MEJJ_FacturaEnca" Relationship="Self.FK__MEJJ_Fact__IdCli__17036CC0" FromRole="MEJJ_Cliente" ToRole="MEJJ_FacturaEnca" />
+        </EntityType>
+        <EntityType Name="MEJJ_Empleado">
+          <Key>
+            <PropertyRef Name="IdEmpleado" />
+          </Key>
+          <Property Name="IdEmpleado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Cedula" Type="String" MaxLength="22" FixedLength="false" Unicode="true" />
+          <Property Name="Mail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Telefono" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Direccion" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="IdRol" Type="Int32" />
+          <Property Name="Contraseña" Type="String" MaxLength="22" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="MEJJ_FacturaEnca" Relationship="Self.FK__MEJJ_Fact__IdEmp__160F4887" FromRole="MEJJ_Empleado" ToRole="MEJJ_FacturaEnca" />
+        </EntityType>
+        <EntityType Name="MEJJ_FacturaDeta">
+          <Key>
+            <PropertyRef Name="IdFacturaD" />
+          </Key>
+          <Property Name="IdFacturaD" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdFacturaE" Type="Int32" Nullable="false" />
+          <Property Name="IdArticulo" Type="Int32" Nullable="false" />
+          <Property Name="Cantidad" Type="Int32" Nullable="false" />
+          <Property Name="PorcentajeDesc" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="SubTotal" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Descuento" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Impuesto" Type="Decimal" Precision="18" Scale="0" />
+          <NavigationProperty Name="MEJJ_Articulo" Relationship="Self.FK__MEJJ_Fact__IdArt__1AD3FDA4" FromRole="MEJJ_FacturaDeta" ToRole="MEJJ_Articulo" />
+          <NavigationProperty Name="MEJJ_FacturaEnca" Relationship="Self.FK__MEJJ_Fact__IdFac__19DFD96B" FromRole="MEJJ_FacturaDeta" ToRole="MEJJ_FacturaEnca" />
+        </EntityType>
+        <EntityType Name="MEJJ_FacturaEnca">
+          <Key>
+            <PropertyRef Name="IdFacturaE" />
+          </Key>
+          <Property Name="IdFacturaE" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdEmpleado" Type="Int32" Nullable="false" />
+          <Property Name="IdCliente" Type="Int32" Nullable="false" />
+          <Property Name="Tipo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Fecha" Type="DateTime" Precision="0" />
+          <Property Name="FechaIng" Type="DateTime" Precision="0" />
+          <Property Name="Observacion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="MedioPago" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="TipoCambio" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Subtotal" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Descuento" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Impuesto" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="IdMoneda" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="MEJJ_Cliente" Relationship="Self.FK__MEJJ_Fact__IdCli__17036CC0" FromRole="MEJJ_FacturaEnca" ToRole="MEJJ_Cliente" />
+          <NavigationProperty Name="MEJJ_Empleado" Relationship="Self.FK__MEJJ_Fact__IdEmp__160F4887" FromRole="MEJJ_FacturaEnca" ToRole="MEJJ_Empleado" />
+          <NavigationProperty Name="MEJJ_FacturaDeta" Relationship="Self.FK__MEJJ_Fact__IdFac__19DFD96B" FromRole="MEJJ_FacturaEnca" ToRole="MEJJ_FacturaDeta" />
+          <NavigationProperty Name="MEJJ_Moneda" Relationship="Self.FK__MEJJ_Fact__IdMon__151B244E" FromRole="MEJJ_FacturaEnca" ToRole="MEJJ_Moneda" />
+        </EntityType>
+        <EntityType Name="MEJJ_Moneda">
+          <Key>
+            <PropertyRef Name="IdMoneda" />
+          </Key>
+          <Property Name="IdMoneda" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Codigo" Type="String" MaxLength="3" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="22" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="MEJJ_FacturaEnca" Relationship="Self.FK__MEJJ_Fact__IdMon__151B244E" FromRole="MEJJ_Moneda" ToRole="MEJJ_FacturaEnca" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK__MEJJ_Fact__IdArt__1AD3FDA4">
+          <End Role="MEJJ_Articulo" Type="Self.MEJJ_Articulo" Multiplicity="1" />
+          <End Role="MEJJ_FacturaDeta" Type="Self.MEJJ_FacturaDeta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MEJJ_Articulo">
+              <PropertyRef Name="IdArticulo" />
+            </Principal>
+            <Dependent Role="MEJJ_FacturaDeta">
+              <PropertyRef Name="IdArticulo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MEJJ_Fact__IdCli__17036CC0">
+          <End Role="MEJJ_Cliente" Type="Self.MEJJ_Cliente" Multiplicity="1" />
+          <End Role="MEJJ_FacturaEnca" Type="Self.MEJJ_FacturaEnca" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MEJJ_Cliente">
+              <PropertyRef Name="IdCliente" />
+            </Principal>
+            <Dependent Role="MEJJ_FacturaEnca">
+              <PropertyRef Name="IdCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MEJJ_Fact__IdEmp__160F4887">
+          <End Role="MEJJ_Empleado" Type="Self.MEJJ_Empleado" Multiplicity="1" />
+          <End Role="MEJJ_FacturaEnca" Type="Self.MEJJ_FacturaEnca" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MEJJ_Empleado">
+              <PropertyRef Name="IdEmpleado" />
+            </Principal>
+            <Dependent Role="MEJJ_FacturaEnca">
+              <PropertyRef Name="IdEmpleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MEJJ_Fact__IdFac__19DFD96B">
+          <End Role="MEJJ_FacturaEnca" Type="Self.MEJJ_FacturaEnca" Multiplicity="1" />
+          <End Role="MEJJ_FacturaDeta" Type="Self.MEJJ_FacturaDeta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MEJJ_FacturaEnca">
+              <PropertyRef Name="IdFacturaE" />
+            </Principal>
+            <Dependent Role="MEJJ_FacturaDeta">
+              <PropertyRef Name="IdFacturaE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MEJJ_Fact__IdMon__151B244E">
+          <End Role="MEJJ_Moneda" Type="Self.MEJJ_Moneda" Multiplicity="1" />
+          <End Role="MEJJ_FacturaEnca" Type="Self.MEJJ_FacturaEnca" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MEJJ_Moneda">
+              <PropertyRef Name="IdMoneda" />
+            </Principal>
+            <Dependent Role="MEJJ_FacturaEnca">
+              <PropertyRef Name="IdMoneda" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MejjHondaEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="MEJJ_Articulo" EntityType="Self.MEJJ_Articulo" />
+          <EntitySet Name="MEJJ_Cliente" EntityType="Self.MEJJ_Cliente" />
+          <EntitySet Name="MEJJ_Empleado" EntityType="Self.MEJJ_Empleado" />
+          <EntitySet Name="MEJJ_FacturaDeta" EntityType="Self.MEJJ_FacturaDeta" />
+          <EntitySet Name="MEJJ_FacturaEnca" EntityType="Self.MEJJ_FacturaEnca" />
+          <EntitySet Name="MEJJ_Moneda" EntityType="Self.MEJJ_Moneda" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <AssociationSet Name="FK__MEJJ_Fact__IdArt__1AD3FDA4" Association="Self.FK__MEJJ_Fact__IdArt__1AD3FDA4">
+            <End Role="MEJJ_Articulo" EntitySet="MEJJ_Articulo" />
+            <End Role="MEJJ_FacturaDeta" EntitySet="MEJJ_FacturaDeta" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MEJJ_Fact__IdCli__17036CC0" Association="Self.FK__MEJJ_Fact__IdCli__17036CC0">
+            <End Role="MEJJ_Cliente" EntitySet="MEJJ_Cliente" />
+            <End Role="MEJJ_FacturaEnca" EntitySet="MEJJ_FacturaEnca" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MEJJ_Fact__IdEmp__160F4887" Association="Self.FK__MEJJ_Fact__IdEmp__160F4887">
+            <End Role="MEJJ_Empleado" EntitySet="MEJJ_Empleado" />
+            <End Role="MEJJ_FacturaEnca" EntitySet="MEJJ_FacturaEnca" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MEJJ_Fact__IdFac__19DFD96B" Association="Self.FK__MEJJ_Fact__IdFac__19DFD96B">
+            <End Role="MEJJ_FacturaEnca" EntitySet="MEJJ_FacturaEnca" />
+            <End Role="MEJJ_FacturaDeta" EntitySet="MEJJ_FacturaDeta" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MEJJ_Fact__IdMon__151B244E" Association="Self.FK__MEJJ_Fact__IdMon__151B244E">
+            <End Role="MEJJ_Moneda" EntitySet="MEJJ_Moneda" />
+            <End Role="MEJJ_FacturaEnca" EntitySet="MEJJ_FacturaEnca" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MejjHondaModelStoreContainer" CdmEntityContainer="MejjHondaEntities">
+          <EntitySetMapping Name="MEJJ_Articulo">
+            <EntityTypeMapping TypeName="MejjHondaModel.MEJJ_Articulo">
+              <MappingFragment StoreEntitySet="MEJJ_Articulo">
+                <ScalarProperty Name="IdArticulo" ColumnName="IdArticulo" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Modelo" ColumnName="Modelo" />
+                <ScalarProperty Name="Precio" ColumnName="Precio" />
+                <ScalarProperty Name="Color" ColumnName="Color" />
+                <ScalarProperty Name="Tamanio" ColumnName="Tamanio" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MEJJ_Cliente">
+            <EntityTypeMapping TypeName="MejjHondaModel.MEJJ_Cliente">
+              <MappingFragment StoreEntitySet="MEJJ_Cliente">
+                <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
+                <ScalarProperty Name="Cedula" ColumnName="Cedula" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="DiasCredito" ColumnName="DiasCredito" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Mail" ColumnName="Mail" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MEJJ_Empleado">
+            <EntityTypeMapping TypeName="MejjHondaModel.MEJJ_Empleado">
+              <MappingFragment StoreEntitySet="MEJJ_Empleado">
+                <ScalarProperty Name="IdEmpleado" ColumnName="IdEmpleado" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Cedula" ColumnName="Cedula" />
+                <ScalarProperty Name="Mail" ColumnName="Mail" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="IdRol" ColumnName="IdRol" />
+                <ScalarProperty Name="Contraseña" ColumnName="Contraseña" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MEJJ_FacturaDeta">
+            <EntityTypeMapping TypeName="MejjHondaModel.MEJJ_FacturaDeta">
+              <MappingFragment StoreEntitySet="MEJJ_FacturaDeta">
+                <ScalarProperty Name="IdFacturaD" ColumnName="IdFacturaD" />
+                <ScalarProperty Name="IdFacturaE" ColumnName="IdFacturaE" />
+                <ScalarProperty Name="IdArticulo" ColumnName="IdArticulo" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="PorcentajeDesc" ColumnName="PorcentajeDesc" />
+                <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
+                <ScalarProperty Name="Descuento" ColumnName="Descuento" />
+                <ScalarProperty Name="Impuesto" ColumnName="Impuesto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MEJJ_FacturaEnca">
+            <EntityTypeMapping TypeName="MejjHondaModel.MEJJ_FacturaEnca">
+              <MappingFragment StoreEntitySet="MEJJ_FacturaEnca">
+                <ScalarProperty Name="IdFacturaE" ColumnName="IdFacturaE" />
+                <ScalarProperty Name="IdEmpleado" ColumnName="IdEmpleado" />
+                <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="FechaIng" ColumnName="FechaIng" />
+                <ScalarProperty Name="Observacion" ColumnName="Observacion" />
+                <ScalarProperty Name="MedioPago" ColumnName="MedioPago" />
+                <ScalarProperty Name="TipoCambio" ColumnName="TipoCambio" />
+                <ScalarProperty Name="Subtotal" ColumnName="Subtotal" />
+                <ScalarProperty Name="Descuento" ColumnName="Descuento" />
+                <ScalarProperty Name="Impuesto" ColumnName="Impuesto" />
+                <ScalarProperty Name="IdMoneda" ColumnName="IdMoneda" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MEJJ_Moneda">
+            <EntityTypeMapping TypeName="MejjHondaModel.MEJJ_Moneda">
+              <MappingFragment StoreEntitySet="MEJJ_Moneda">
+                <ScalarProperty Name="IdMoneda" ColumnName="IdMoneda" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="MejjHondaModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

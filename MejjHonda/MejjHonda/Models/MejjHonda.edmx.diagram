@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="ffedd67112ee45f39394725ab5fe04f8" Name="Diagram1" ZoomLevel="74">
+        <EntityTypeShape EntityType="MejjHondaModel.MEJJ_Articulo" Width="1.5" PointX="11" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="MejjHondaModel.MEJJ_Cliente" Width="1.5" PointX="2.875" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MejjHondaModel.MEJJ_Empleado" Width="1.5" PointX="8.125" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MejjHondaModel.MEJJ_FacturaDeta" Width="1.5" PointX="7.875" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MejjHondaModel.MEJJ_FacturaEnca" Width="1.5" PointX="5.5" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MejjHondaModel.MEJJ_Moneda" Width="1.5" PointX="5" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MejjHondaModel.sysdiagram" Width="1.5" PointX="10.75" PointY="5.25" IsExpanded="true" />
+        <AssociationConnector Association="MejjHondaModel.FK__MEJJ_Fact__IdArt__1AD3FDA4" ManuallyRouted="false" />
+        <AssociationConnector Association="MejjHondaModel.FK__MEJJ_Fact__IdCli__17036CC0" ManuallyRouted="false" />
+        <AssociationConnector Association="MejjHondaModel.FK__MEJJ_Fact__IdEmp__160F4887" ManuallyRouted="false" />
+        <AssociationConnector Association="MejjHondaModel.FK__MEJJ_Fact__IdFac__19DFD96B" ManuallyRouted="false" />
+        <AssociationConnector Association="MejjHondaModel.FK__MEJJ_Fact__IdMon__151B244E" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
