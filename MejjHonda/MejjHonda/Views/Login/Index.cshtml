@@ -54,6 +54,7 @@
                                                 <span>@Html.ValidationMessageFor(model => model.Contraseña)</span>
                                             </div>
                                             <input type="submit" class="btn btn-primary btn-user btn-block" value="Login" />
+                                            <span class="field-validation-error">@Html.DisplayFor(model => model.LoginErrorMessage)</span>
                                         }
                                         <hr>
                                         <div class="text-center">

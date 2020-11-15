@@ -174,8 +174,14 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\ClienteController.cs" />
+    <Compile Include="Controllers\EmpleadoController.cs" />
+    <Compile Include="Controllers\FacturaDetaController.cs" />
+    <Compile Include="Controllers\FacturaEncaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\ArticuloController.cs" />
+    <Compile Include="Controllers\MonedaController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -2070,6 +2076,36 @@
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Views\MEJJ_Articulo\Create.cshtml" />
+    <Content Include="Views\MEJJ_Articulo\Delete.cshtml" />
+    <Content Include="Views\MEJJ_Articulo\Details.cshtml" />
+    <Content Include="Views\MEJJ_Articulo\Edit.cshtml" />
+    <Content Include="Views\MEJJ_Articulo\Index.cshtml" />
+    <Content Include="Views\Cliente\Create.cshtml" />
+    <Content Include="Views\Cliente\Delete.cshtml" />
+    <Content Include="Views\Cliente\Details.cshtml" />
+    <Content Include="Views\Cliente\Edit.cshtml" />
+    <Content Include="Views\Cliente\Index.cshtml" />
+    <Content Include="Views\Empleado\Create.cshtml" />
+    <Content Include="Views\Empleado\Delete.cshtml" />
+    <Content Include="Views\Empleado\Details.cshtml" />
+    <Content Include="Views\Empleado\Edit.cshtml" />
+    <Content Include="Views\Empleado\Index.cshtml" />
+    <Content Include="Views\FacturaDeta\Create.cshtml" />
+    <Content Include="Views\FacturaDeta\Delete.cshtml" />
+    <Content Include="Views\FacturaDeta\Details.cshtml" />
+    <Content Include="Views\FacturaDeta\Edit.cshtml" />
+    <Content Include="Views\FacturaDeta\Index.cshtml" />
+    <Content Include="Views\FacturaEnca\Create.cshtml" />
+    <Content Include="Views\FacturaEnca\Delete.cshtml" />
+    <Content Include="Views\FacturaEnca\Details.cshtml" />
+    <Content Include="Views\FacturaEnca\Edit.cshtml" />
+    <Content Include="Views\FacturaEnca\Index.cshtml" />
+    <Content Include="Views\Moneda\Create.cshtml" />
+    <Content Include="Views\Moneda\Delete.cshtml" />
+    <Content Include="Views\Moneda\Details.cshtml" />
+    <Content Include="Views\Moneda\Edit.cshtml" />
+    <Content Include="Views\Moneda\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
