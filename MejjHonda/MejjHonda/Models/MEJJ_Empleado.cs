@@ -11,7 +11,9 @@ namespace MejjHonda.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
+
     public partial class MEJJ_Empleado
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -23,15 +25,19 @@ namespace MejjHonda.Models
         public int IdEmpleado { get; set; }
         public string Nombre { get; set; }
         public string Cedula { get; set; }
+        [DataType(DataType.EmailAddress)]
+        [Required(ErrorMessage = "Este campo es nesesario")]
         public string Mail { get; set; }
         public string Telefono { get; set; }
         public string Direccion { get; set; }
         public Nullable<int> IdRol { get; set; }
-
-       
+        [Required(ErrorMessage = "Este campo es nesesario")]
+        [DataType(DataType.Password)]
         public string Contraseña { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MEJJ_FacturaEnca> MEJJ_FacturaEnca { get; set; }
+
+        public string LoginErrorMessage { get; set; }
     }
 }
