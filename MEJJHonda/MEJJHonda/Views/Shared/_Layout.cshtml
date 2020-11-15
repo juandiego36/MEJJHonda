@@ -1,4 +1,11 @@
-﻿<!DOCTYPE html>
+﻿
+@{ 
+    if (Session["userInfo"] == null) {
+        Response.Redirect("~/Login/Index");
+    }
+}
+
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
