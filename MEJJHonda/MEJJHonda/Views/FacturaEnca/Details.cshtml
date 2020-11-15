@@ -1,0 +1,115 @@
+﻿@model MejjHonda.Models.MEJJ_FacturaEnca
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>MEJJ_FacturaEnca</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Tipo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tipo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fecha)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fecha)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaIng)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaIng)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Observacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Observacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MedioPago)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MedioPago)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TipoCambio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TipoCambio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Subtotal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Subtotal)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Descuento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descuento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Impuesto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Impuesto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MEJJ_Cliente.Cedula)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MEJJ_Cliente.Cedula)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MEJJ_Empleado.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MEJJ_Empleado.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MEJJ_Moneda.Codigo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MEJJ_Moneda.Codigo)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IdFacturaE }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

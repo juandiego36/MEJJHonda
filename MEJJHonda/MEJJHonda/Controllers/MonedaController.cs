@@ -10,107 +10,107 @@ using MejjHonda.Models;
 
 namespace MejjHonda.Controllers
 {
-    public class MEJJ_ArticuloController : Controller
+    public class MonedaController : Controller
     {
         private MejjHondaEntities db = new MejjHondaEntities();
 
-        // GET: MEJJ_Articulo
+        // GET: Moneda
         public ActionResult Index()
         {
-            return View(db.MEJJ_Articulo.ToList());
+            return View(db.MEJJ_Moneda.ToList());
         }
 
-        // GET: MEJJ_Articulo/Details/5
+        // GET: Moneda/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            MEJJ_Articulo mEJJ_Articulo = db.MEJJ_Articulo.Find(id);
-            if (mEJJ_Articulo == null)
+            MEJJ_Moneda mEJJ_Moneda = db.MEJJ_Moneda.Find(id);
+            if (mEJJ_Moneda == null)
             {
                 return HttpNotFound();
             }
-            return View(mEJJ_Articulo);
+            return View(mEJJ_Moneda);
         }
 
-        // GET: MEJJ_Articulo/Create
+        // GET: Moneda/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: MEJJ_Articulo/Create
+        // POST: Moneda/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "IdArticulo,Descripcion,Modelo,Precio,Color,Tamanio")] MEJJ_Articulo mEJJ_Articulo)
+        public ActionResult Create([Bind(Include = "IdMoneda,Codigo,Nombre")] MEJJ_Moneda mEJJ_Moneda)
         {
             if (ModelState.IsValid)
             {
-                db.MEJJ_Articulo.Add(mEJJ_Articulo);
+                db.MEJJ_Moneda.Add(mEJJ_Moneda);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(mEJJ_Articulo);
+            return View(mEJJ_Moneda);
         }
 
-        // GET: MEJJ_Articulo/Edit/5
+        // GET: Moneda/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            MEJJ_Articulo mEJJ_Articulo = db.MEJJ_Articulo.Find(id);
-            if (mEJJ_Articulo == null)
+            MEJJ_Moneda mEJJ_Moneda = db.MEJJ_Moneda.Find(id);
+            if (mEJJ_Moneda == null)
             {
                 return HttpNotFound();
             }
-            return View(mEJJ_Articulo);
+            return View(mEJJ_Moneda);
         }
 
-        // POST: MEJJ_Articulo/Edit/5
+        // POST: Moneda/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "IdArticulo,Descripcion,Modelo,Precio,Color,Tamanio")] MEJJ_Articulo mEJJ_Articulo)
+        public ActionResult Edit([Bind(Include = "IdMoneda,Codigo,Nombre")] MEJJ_Moneda mEJJ_Moneda)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(mEJJ_Articulo).State = EntityState.Modified;
+                db.Entry(mEJJ_Moneda).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(mEJJ_Articulo);
+            return View(mEJJ_Moneda);
         }
 
-        // GET: MEJJ_Articulo/Delete/5
+        // GET: Moneda/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            MEJJ_Articulo mEJJ_Articulo = db.MEJJ_Articulo.Find(id);
-            if (mEJJ_Articulo == null)
+            MEJJ_Moneda mEJJ_Moneda = db.MEJJ_Moneda.Find(id);
+            if (mEJJ_Moneda == null)
             {
                 return HttpNotFound();
             }
-            return View(mEJJ_Articulo);
+            return View(mEJJ_Moneda);
         }
 
-        // POST: MEJJ_Articulo/Delete/5
+        // POST: Moneda/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            MEJJ_Articulo mEJJ_Articulo = db.MEJJ_Articulo.Find(id);
-            db.MEJJ_Articulo.Remove(mEJJ_Articulo);
+            MEJJ_Moneda mEJJ_Moneda = db.MEJJ_Moneda.Find(id);
+            db.MEJJ_Moneda.Remove(mEJJ_Moneda);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
