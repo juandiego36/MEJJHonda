@@ -21,7 +21,9 @@ namespace MejjHonda.Controllers
         {
             using (MejjHondaEntities db = new MejjHondaEntities()) {
                 var empleadoDetails = db.MEJJ_Empleado.Where(x => x.Mail == empleadoModel.Mail && x.Contraseña == empleadoModel.Contraseña).FirstOrDefault();
-                if (empleadoDetails == null) { 
+                if (empleadoDetails == null) {
+                    empleadoModel.LoginErrorMessage = "Contrasena o correo incorrectos";
+                    return View("Index", empleadoModel);
                 }
             }
                 return View();
