@@ -78,10 +78,13 @@
                 )
             </li>
             <li class="nav-item active">
-                <a class="nav-link" href="index.html">
-                    <i class="fas fa-fw fa-money-check"></i>
-                    <span>Ventas</span>
-                </a>
+                @Html.ActionLink(
+                    " Ventas",
+                    "Index",
+                    "FacturaEnca",
+                    null,
+                    new { @style = menuStyle, @class= "fas fa-fw fa-money-check" }
+                )
             </li>
             <li class="nav-item active">
                 <a class="nav-link" href="index.html">
