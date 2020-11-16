@@ -4249,7 +4249,6 @@ input[type="button"].btn-block {
 .nav-tabs {
     border-bottom: 1px solid #dddfeb;
 }
-
     .nav-tabs .nav-item {
         margin-bottom: -1px;
     }
@@ -12158,10 +12157,4 @@ footer.sticky-footer {
 
 body.sidebar-toggled footer.sticky-footer {
     width: 100%;
-}
-#dropdownuserinfo {
-    list-style: none;
-    margin: 0px;
-    padding: 0px;
-    margin-right: 100px;
 }
