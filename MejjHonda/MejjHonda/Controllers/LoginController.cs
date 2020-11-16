@@ -30,10 +30,7 @@ namespace MejjHonda.Controllers
 
                     Session["IdEmpleado"] = empleadoDetails.IdEmpleado;
                     Session["Nombre"] = empleadoDetails.Nombre;
-                    
-
-                    Console.Write(Session["IdEmpleado"].ToString());
-                    Console.Write(empleadoModel.Nombre);
+           
 
                     return RedirectToAction("Index","Home");
                 }
