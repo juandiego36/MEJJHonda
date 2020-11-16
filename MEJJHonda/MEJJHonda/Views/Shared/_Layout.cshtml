@@ -45,48 +45,44 @@
             <hr class="sidebar-divider my-0">
 
             <li class="nav-item active">
-                <a class="nav-link" href="_Layout.cshtml">
+                <a class="nav-link" href="#">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span>
                 </a>
             </li>
 
             <hr class="sidebar-divider">
+
             <li class="nav-item active">
-                @Html.ActionLink(
-                    " Productos",
-                    "Index",
-                    "Articulo",
-                    null,
-                    new { @style = menuStyle, @class="fas fa-fw fa-motorcycle" }
-                )
+ 
+                <a class="nav-link" href="@Url.Action("Index", "Articulo")">
+                    <i class="fas fa-fw fa-motorcycle"></i>
+                    <span>Producto</span>
+                </a>
+
             </li>
             <li class="nav-item active">
-                @Html.ActionLink(
-                    " Colaboradores",
-                    "Index",
-                    "Empleado",
-                    null,
-                    new { @style = menuStyle, @class= "fas fa-fw fa-people-arrows" }
-                )
+
+                <a class="nav-link" href="@Url.Action("Index", "Empleado")">
+                    <i class="fas fa-fw fa-people-arrows"></i>
+                    <span>Colaborador</span>
+                </a>
+
             </li>
             <li class="nav-item active">
-                @Html.ActionLink(
-                    " Clientes",
-                    "Index",
-                    "Cliente",
-                    null,
-                    new { @style = menuStyle, @class= "fas fa-fw fa-people-arrows" }
-                )
+
+                <a class="nav-link" href="@Url.Action("Index", "Cliente")">
+                    <i class="fas fa-fw fa-people-arrows"></i>
+                    <span>Cliente</span>
+                </a>
+
             </li>
             <li class="nav-item active">
-                @Html.ActionLink(
-                    " Ventas",
-                    "Index",
-                    "FacturaEnca",
-                    null,
-                    new { @style = menuStyle, @class= "fas fa-fw fa-money-check" }
-                )
+
+                <a class="nav-link" href="@Url.Action("Index", "FacturaEnca")">
+                    <i class="fas fa-fw fa-money-check"></i>
+                    <span>Ventas</span>
+                </a>
             </li>
             <li class="nav-item active">
                 <a class="nav-link" href="index.html">
