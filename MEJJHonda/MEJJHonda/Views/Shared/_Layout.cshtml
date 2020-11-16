@@ -1,10 +1,16 @@
 ﻿
+<<<<<<< HEAD
 @{ 
     if (Session["IdEmpleado"] == null) {
+=======
+@{
+    if (Session["userInfo"] == null)
+    {
+>>>>>>> 0bddb07f4ec3a8cda09104fe098cde930212d214
         Response.Redirect("~/Login/Index");
     }
+    String menuStyle = "color:white;width:100%;margin:15px;text-align:left";
 }
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -50,28 +56,40 @@
 
             <hr class="sidebar-divider">
             <li class="nav-item active">
-                <a class="nav-link" href="index.html">
-                    <i class="fas fa-fw fa-motorcycle"></i>
-                    <span>Productos</span>
-                </a>
+                @Html.ActionLink(
+                    " Productos",
+                    "Index",
+                    "Articulo",
+                    null,
+                    new { @style = menuStyle, @class="fas fa-fw fa-motorcycle" }
+                )
             </li>
             <li class="nav-item active">
-                <a class="nav-link" href="index.html">
-                    <i class="fas fa-fw fa-people-arrows"></i>
-                    <span>Colaboradores</span>
-                </a>
+                @Html.ActionLink(
+                    " Colaboradores",
+                    "Index",
+                    "Empleado",
+                    null,
+                    new { @style = menuStyle, @class= "fas fa-fw fa-people-arrows" }
+                )
             </li>
             <li class="nav-item active">
-                <a class="nav-link" href="index.html">
-                    <i class="fas fa-fw fa-people-arrows"></i>
-                    <span>Clientes</span>
-                </a>
+                @Html.ActionLink(
+                    " Clientes",
+                    "Index",
+                    "Cliente",
+                    null,
+                    new { @style = menuStyle, @class= "fas fa-fw fa-people-arrows" }
+                )
             </li>
             <li class="nav-item active">
-                <a class="nav-link" href="index.html">
-                    <i class="fas fa-fw fa-money-check"></i>
-                    <span>Ventas</span>
-                </a>
+                @Html.ActionLink(
+                    " Ventas",
+                    "Index",
+                    "FacturaEnca",
+                    null,
+                    new { @style = menuStyle, @class= "fas fa-fw fa-money-check" }
+                )
             </li>
             <li class="nav-item active">
                 <a class="nav-link" href="index.html">
@@ -116,6 +134,7 @@
                         </div>
                     </form>
                     <ul>
+<<<<<<< HEAD
                     <!-- Nav Item - User Information -->
                     <li class="nav-item dropdown no-arrow">
                         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -127,14 +146,26 @@
                             <a class="dropdown-item" href="#">
                                 <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                 Profile
+=======
+                        <!-- Nav Item - User Information -->
+                        <li class="nav-item dropdown no-arrow">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Nombre del usuario</span>
+>>>>>>> 0bddb07f4ec3a8cda09104fe098cde930212d214
                             </a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-                                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                Logout
-                            </a>
-                        </div>
-                    </li>
+                            <!-- Dropdown - User Information -->
+                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                                <a class="dropdown-item" href="#">
+                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Profile
+                                </a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Logout
+                                </a>
+                            </div>
+                        </li>
                     </ul>
 
                 </nav>
@@ -184,7 +215,7 @@
         </div>
 
         <!-- Bootstrap core JavaScript-->
- 
+
         <script src="~/Scripts/jquery-3.5.1.min.js"></script>
         <script src="~/Scripts/bootstrap.bundle.min.js"></script>
 
@@ -195,7 +226,7 @@
         <script src="~/Scripts/Views/Layout.js"></script>
 
 
-        </div>
+    </div>
 
 </body>
 
