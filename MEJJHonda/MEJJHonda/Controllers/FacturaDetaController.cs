@@ -13,8 +13,8 @@ namespace MejjHonda.Controllers
     public class FacturaDetaController : Controller
     {
         private MejjHondaEntities db = new MejjHondaEntities();
-
         // GET: FacturaDeta
+
         public ActionResult Index()
         {
             var mEJJ_FacturaDeta = db.MEJJ_FacturaDeta.Include(m => m.MEJJ_Articulo).Include(m => m.MEJJ_FacturaEnca);
@@ -132,5 +132,8 @@ namespace MejjHonda.Controllers
             }
             base.Dispose(disposing);
         }
+
+
+
     }
 }

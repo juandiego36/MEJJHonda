@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Dynamic;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -39,9 +40,10 @@ namespace MejjHonda.Controllers
         // GET: FacturaEnca/Create
         public ActionResult Create()
         {
-            ViewBag.IdCliente = new SelectList(db.MEJJ_Cliente, "IdCliente", "Cedula");
+            ViewBag.IdCliente = new SelectList(db.MEJJ_Cliente, "IdCliente", "Nombre");
             ViewBag.IdEmpleado = new SelectList(db.MEJJ_Empleado, "IdEmpleado", "Nombre");
-            ViewBag.IdMoneda = new SelectList(db.MEJJ_Moneda, "IdMoneda", "Codigo");
+            ViewBag.IdMoneda = new SelectList(db.MEJJ_Moneda, "Codigo", "Nombre");
+            ViewBag.IdArticulo = new SelectList(db.MEJJ_Articulo, "IdArticulo", "Descripcion", "Precio");
             return View();
         }
 

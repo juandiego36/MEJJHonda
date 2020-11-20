@@ -23,6 +23,7 @@ namespace MejjHonda.Models
         public Nullable<decimal> Descuento { get; set; }
         public Nullable<decimal> Impuesto { get; set; }
     
+
         public virtual MEJJ_Articulo MEJJ_Articulo { get; set; }
         public virtual MEJJ_FacturaEnca MEJJ_FacturaEnca { get; set; }
     }
