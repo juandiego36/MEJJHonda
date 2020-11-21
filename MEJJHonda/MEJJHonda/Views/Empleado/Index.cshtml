@@ -27,12 +27,6 @@
         <th>
             @Html.DisplayNameFor(model => model.Direccion)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.IdRol)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Contraseña)
-        </th>
         <th></th>
     </tr>
 
@@ -53,12 +47,7 @@
         <td>
             @Html.DisplayFor(modelItem => item.Direccion)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IdRol)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Contraseña)
-        </td>
+
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.IdEmpleado }) |
             @Html.ActionLink("Details", "Details", new { id=item.IdEmpleado }) |

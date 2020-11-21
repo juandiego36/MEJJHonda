@@ -50,9 +50,19 @@ namespace MejjHonda.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.MEJJ_Empleado.Add(mEJJ_Empleado);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                var correoUnico = db.MEJJ_Empleado.Where(x => x.Mail == mEJJ_Empleado.Mail).FirstOrDefault();
+                if (correoUnico != null)
+                {
+                    mEJJ_Empleado.LoginErrorMessage = "El correo ya esta en uso";
+                    return View(mEJJ_Empleado);
+                }
+                else
+                {
+                    db.MEJJ_Empleado.Add(mEJJ_Empleado);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+
             }
 
             return View(mEJJ_Empleado);
@@ -82,10 +92,21 @@ namespace MejjHonda.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(mEJJ_Empleado).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                var correoUnico = db.MEJJ_Empleado.Where(x => x.Mail == mEJJ_Empleado.Mail && x.IdEmpleado != mEJJ_Empleado.IdEmpleado).FirstOrDefault();
+                if (correoUnico != null)
+                {
+                    mEJJ_Empleado.LoginErrorMessage = "El correo ya esta en uso";
+                    return View(mEJJ_Empleado);
+                }
+                else
+                {
+                    db.Entry(mEJJ_Empleado).State = EntityState.Modified;
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+
             }
+
             return View(mEJJ_Empleado);
         }
 

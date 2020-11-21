@@ -11,7 +11,9 @@ namespace MejjHonda.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
+
     public partial class MEJJ_Cliente
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,11 +23,26 @@ namespace MejjHonda.Models
         }
     
         public int IdCliente { get; set; }
+        [Required(ErrorMessage = "Este campo es nesesario")]
+        [Range(0, int.MaxValue, ErrorMessage = "Solo numeros")]
         public string Cedula { get; set; }
+        [Required(ErrorMessage = "Este campo es nesesario")]
+        [DataType(DataType.PhoneNumber)]
+        [Range(0, int.MaxValue, ErrorMessage = "Solo numeros")]
         public string Telefono { get; set; }
+        [Required(ErrorMessage = "Este campo es nesesario")]
+        [DisplayName("Dirección ")]
+        [StringLength(70, ErrorMessage = "Maximo 70 digitos")]
         public string Direccion { get; set; }
+        [Range(0, int.MaxValue, ErrorMessage = "Solo numeros")]
+        [DisplayName("Días de crédito ")]
         public Nullable<int> DiasCredito { get; set; }
+        [Required(ErrorMessage = "Este campo es nesesario")]
+        [StringLength(15, ErrorMessage = "Maximo 15 digitos")]
         public string Nombre { get; set; }
+        [EmailAddress(ErrorMessage = "Formato de correo invalido")]
+        [StringLength(20, ErrorMessage = "Maximo 20 digitos")]
+        [Required(ErrorMessage = "Este campo es nesesario")]
         public string Mail { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -12,6 +12,8 @@ namespace MejjHonda.Models
     using System;
     using System.Collections.Generic;
     using System.Web.Mvc;
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
 
     public partial class MEJJ_Articulo
     {
@@ -22,10 +24,20 @@ namespace MejjHonda.Models
         }
     
         public int IdArticulo { get; set; }
+        [Required(ErrorMessage = "Este campo es nesesario")]
+        [StringLength(100, ErrorMessage = "Maximo 100 digitos")]
         public string Descripcion { get; set; }
+        [Required(ErrorMessage = "Este campo es nesesario")]
+        [StringLength(50, ErrorMessage = "Maximo 10 digitos")]
         public string Modelo { get; set; }
+        [Range(0, int.MaxValue, ErrorMessage = "Solo numeros")]
         public Nullable<decimal> Precio { get; set; }
+        [Required(ErrorMessage = "Este campo es nesesario")]
+        [StringLength(10, ErrorMessage = "Maximo 10 digitos")]
         public string Color { get; set; }
+        [Required(ErrorMessage = "Este campo es nesesario")]
+        [DisplayName("Tamaño")]
+        [Range(0, int.MaxValue, ErrorMessage = "Solo numeros")]
         public string Tamanio { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

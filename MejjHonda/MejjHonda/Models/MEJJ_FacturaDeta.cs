@@ -11,13 +11,17 @@ namespace MejjHonda.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
+
     public partial class MEJJ_FacturaDeta
     {
         public int IdFacturaD { get; set; }
         public int IdFacturaE { get; set; }
         public int IdArticulo { get; set; }
+        [Required(ErrorMessage = "Este campo es nesesario")]
         public int Cantidad { get; set; }
+        [DisplayName("Porcentaje de descuento")]
         public Nullable<decimal> PorcentajeDesc { get; set; }
         public Nullable<decimal> SubTotal { get; set; }
         public Nullable<decimal> Descuento { get; set; }

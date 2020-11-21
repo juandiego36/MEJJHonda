@@ -11,7 +11,9 @@ namespace MejjHonda.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
+
     public partial class MEJJ_FacturaEnca
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -24,6 +26,7 @@ namespace MejjHonda.Models
         public int IdEmpleado { get; set; }
         public int IdCliente { get; set; }
         public string Tipo { get; set; }
+        [DataType(DataType.DateTime)]
         public Nullable<System.DateTime> Fecha { get; set; }
         public Nullable<System.DateTime> FechaIng { get; set; }
         public string Observacion { get; set; }
