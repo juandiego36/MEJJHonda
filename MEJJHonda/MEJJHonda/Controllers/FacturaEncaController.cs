@@ -43,7 +43,7 @@ namespace MejjHonda.Controllers
             ViewBag.IdCliente = new SelectList(db.MEJJ_Cliente, "IdCliente", "Nombre");
             ViewBag.IdEmpleado = new SelectList(db.MEJJ_Empleado, "IdEmpleado", "Nombre");
             ViewBag.IdMoneda = new SelectList(db.MEJJ_Moneda, "Codigo", "Nombre");
-            ViewBag.IdArticulo = new SelectList(db.MEJJ_Articulo, "IdArticulo", "Descripcion", "Precio");
+            ViewBag.Articulos = db.MEJJ_Articulo.ToList();
             return View();
         }
 
@@ -66,6 +66,7 @@ namespace MejjHonda.Controllers
             ViewBag.IdMoneda = new SelectList(db.MEJJ_Moneda, "IdMoneda", "Codigo", mEJJ_FacturaEnca.IdMoneda);
             return View(mEJJ_FacturaEnca);
         }
+
 
         // GET: FacturaEnca/Edit/5
         public ActionResult Edit(int? id)

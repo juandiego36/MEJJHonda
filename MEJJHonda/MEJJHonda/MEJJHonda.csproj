@@ -2053,6 +2053,7 @@
     <Content Include="Scripts\umd\popper-utils.min.js" />
     <Content Include="Scripts\umd\popper.js" />
     <Content Include="Scripts\umd\popper.min.js" />
+    <Content Include="Scripts\Views\Factura.js" />
     <Content Include="Scripts\Views\Layout.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -2107,7 +2108,6 @@
     <Content Include="Views\Moneda\Details.cshtml" />
     <Content Include="Views\Moneda\Edit.cshtml" />
     <Content Include="Views\Moneda\Index.cshtml" />
-    <Content Include="Views\Shared\_Detalles.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

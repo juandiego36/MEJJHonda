@@ -9,8 +9,8 @@
 <h2>Generar Factura</h2>
 
 
-@using (Html.BeginForm())
-{
+@*@using (Html.BeginForm())
+{*@
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
@@ -18,65 +18,154 @@
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
         <div class="form-group">
-            @Html.LabelFor(model => model.IdCliente, "IdCliente", htmlAttributes: new { @class = "control-label col-md-2" })
+            <label class = "control-label col-md-2">Cliente</label>
             <div class="col-md-10">
                 @Html.DropDownList("IdCliente", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.IdCliente, "", new { @class = "text-danger" })
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Fecha, htmlAttributes: new { @class = "control-label col-md-2" })
+        @*<div class="form-group">
+           <label class = "control-label col-md-2">Fecha</label>
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Fecha, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Fecha, "", new { @class = "text-danger" })
             </div>
-        </div>
+        </div>*@
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Observacion, htmlAttributes: new { @class = "control-label col-md-2" })
+           <label class = "control-label col-md-2">Observación</label>
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Observacion, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Observacion, "", new { @class = "text-danger" })
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Subtotal, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Subtotal, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Subtotal, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Impuesto, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Impuesto, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Impuesto, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.IdMoneda, "IdMoneda", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("IdMoneda", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.IdMoneda, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-
         <div>
-            @Html.Partial("_Detalles")
+            <!-- Detalles Factura -->
+            <div class="table-responsive">
+                <table class="table table-striped table-bordered bootstrap-datatable datatable" id="TableArticulos">
+                    <thead>
+                        <tr>
+                            <th>
+                                <div class="example-box-wrapper" style=" height:30px">
+                                    <a class="btn btn-primary" href="#" data-toggle="modal" data-target="#articulosModal">
+                                        Artículo
+                                    </a>
+                                </div>
+                            </th>
+                            <th style="width:30px">Id</th>
+                            <th style="width:30px">Precio</th>
+                            <th style="width:30px">Cantidad</th>
+                            <th style="width:30px"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td width="250">
+                                <input class="form-control" type="text" id="NameArticulo" disabled>
+                            </td>
+                            <td width="30px">
+                                <input class="form-control" type="text" id="IdArticulo" disabled>
+                            </td>
+                            <td width="30px">
+                                <input class="form-control" type="text" id="PriceArticulo" disabled>
+                            </td>
+                            <td width="30px">
+                                <input class="form-control" type="text" id="CantidadArticulo" onkeypress="return ValidaNumericos(event, this)" maxlength="3">
+                            </td>
+                            <td width="30px">
+                                <div class="example-box-wrapper" style="height:30px">
+                                    <a class="btn btn-outline-success" title="Agregar artículo" onclick="ValidaLinea()">
+                                        <i class="fas fa-fw fa-plus"></i>
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        @*------------------------- CON JQUERY-----------------------------*@
+                    </tfoot>
+                </table>
+            </div>
+
+            <table class="table table-striped table-bordered bootstrap-datatable datatable" id="totales">
+                <thead>
+                    <tr>
+                        <th colspan="3" class="right text-right">Subtotal:&nbsp;</th>
+                        <th id="subTotal" style="width:130px"></th>
+                    </tr>
+                    <tr>
+                        <th colspan="3" class="right text-right">IVA:&nbsp;</th>
+                        <th id="impuesto" style="width:130px"></th>
+                    </tr>
+                    <tr>
+                        <th colspan="3" class="right text-right">Total:&nbsp;</th>
+                        <th id="total" style="width:130px"></th>
+                    </tr>
+
+
+                </thead>
+            </table>
+            <!-- End Detalles Factura -->
+            <!-- Modal artículos -->
+            <div class="modal fade" id="articulosModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Artículos</h5>
+                            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+
+                            <div class="col-sm-12">
+
+                                <table class="table table-striped table-bordered bootstrap-datatable datatable">
+                                    <thead>
+                                        <tr>
+                                            <th>Descripci&oacute;n</th>
+                                            <th>Precio</th>
+                                            <th style="width:30px"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                        @foreach (var item in ViewBag.Articulos)
+                                        {
+                                            <tr>
+                                                <td>@item.Descripcion</td>
+                                                <td>@item.Precio</td>
+                                                <td>
+                                                    <a class="btn btn-outline-info" onclick='SeleccionaArticulo("@(item.IdArticulo)" , "@(item.Descripcion)", "@(item.Precio)");'>
+                                                        <i class="fas fa-fw fa-check"></i>
+                                                    </a>
+
+                                                </td>
+                                            </tr>
+                                        }
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Modal artículos -->
         </div>
 
         <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
+                <div class="col-md-2 col-md-offset-8">
+                    <input type="submit" value="Registrar" class="btn btn-success" onclick="Registrar(model.IdCliente)"/>
+                </div>
         </div>
     </div>
-}
+@*}*@
 
 <div>
     @Html.ActionLink("Atrás", "Index")
@@ -85,3 +174,19 @@
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
+
+
+<script src="~/Scripts/Views/Factura.js"></script>
+
+
+<script>
+
+    $(function () {
+        SeleccionaArticulo(id, descripcion, precio);
+        ValidaLinea();
+        ValidaNumericos();
+        Registrar(id);
+
+    });
+
+</script>
