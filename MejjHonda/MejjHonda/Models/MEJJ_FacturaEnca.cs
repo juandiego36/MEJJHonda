@@ -28,13 +28,18 @@ namespace MejjHonda.Models
         public string Tipo { get; set; }
         [DataType(DataType.DateTime)]
         public Nullable<System.DateTime> Fecha { get; set; }
+        [DisplayName("Fecha de Ingreso")]
         public Nullable<System.DateTime> FechaIng { get; set; }
+        [DisplayName("Observación")]
         public string Observacion { get; set; }
+        [DisplayName("Medio pago")]
         public string MedioPago { get; set; }
+        [DisplayName("Tipo de cambio")]
         public Nullable<decimal> TipoCambio { get; set; }
         public Nullable<decimal> Subtotal { get; set; }
         public Nullable<decimal> Descuento { get; set; }
         public Nullable<decimal> Impuesto { get; set; }
+        [DisplayName("Moneda")]
         public int IdMoneda { get; set; }
     
         public virtual MEJJ_Cliente MEJJ_Cliente { get; set; }
