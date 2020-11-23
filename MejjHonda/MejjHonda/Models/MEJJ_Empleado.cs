@@ -28,14 +28,17 @@ namespace MejjHonda.Models
         public string Nombre { get; set; }
         [Required(ErrorMessage = "Este campo es nesesario")]
         [Range(0, int.MaxValue, ErrorMessage = "Solo numeros")]
+        [DisplayName("Cédula")]
         public string Cedula { get; set; }
         [EmailAddress(ErrorMessage = "Formato de correo invalido")]
         [StringLength(20, ErrorMessage = "Maximo 20 digitos")]
         [Required(ErrorMessage = "Este campo es nesesario")]
+        [DisplayName("e-mail")]
         public string Mail { get; set; }
         [Required(ErrorMessage = "Este campo es nesesario")]
         [DataType(DataType.PhoneNumber)]
         [Range(0, int.MaxValue, ErrorMessage = "Solo numeros")]
+        [DisplayName("Teléfono")]
         public string Telefono { get; set; }
         [Required(ErrorMessage = "Este campo es nesesario")]
         [DisplayName("Dirección ")]
@@ -44,6 +47,7 @@ namespace MejjHonda.Models
         public Nullable<int> IdRol { get; set; }
         [Required(ErrorMessage = "Este campo es nesesario")]
         [DataType(DataType.Password)]
+        [DisplayName("Contraseña")]
         public string Contraseña { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
