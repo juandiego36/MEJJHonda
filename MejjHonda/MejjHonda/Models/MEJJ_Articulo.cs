@@ -25,9 +25,11 @@ namespace MejjHonda.Models
     
         public int IdArticulo { get; set; }
         [Required(ErrorMessage = "Este campo es nesesario")]
+        [DisplayName("Descripción")]
         [StringLength(100, ErrorMessage = "Maximo 100 digitos")]
         public string Descripcion { get; set; }
         [Required(ErrorMessage = "Este campo es nesesario")]
+        [DisplayName("Modelos")]
         [StringLength(50, ErrorMessage = "Maximo 10 digitos")]
         public string Modelo { get; set; }
         [Range(0, int.MaxValue, ErrorMessage = "Solo numeros")]
