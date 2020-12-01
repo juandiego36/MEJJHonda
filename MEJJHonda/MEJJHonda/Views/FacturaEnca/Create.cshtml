@@ -6,12 +6,11 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<ol class="breadcrumb text-left">
+    <li><a @Html.ActionLink("Atrás", "Index")>Generar Factura</a></li>
+</ol>
+
 <h2>Generar Factura</h2>
-
-
-@*@using (Html.BeginForm())
-{*@
-    @*@Html.AntiForgeryToken()*@
 
     <div class="form-horizontal">
         <hr />
@@ -159,17 +158,19 @@
             <!-- End Modal artículos -->
         </div>
 
-        <div class="form-group">
-                <div class="col-md-2 col-md-offset-8">
-                    <button class="btn btn-success" onclick="Registrar()">Registrar</button>
+        <div class="row">
+            <div class="col-sm-6 offset-10">
+                <div class="form-group">
+                    <div class="col-md-2 col-md-offset-8">
+                        <button class="btn btn-success" onclick="Registrar()">Registrar</button>
+                    </div>
                 </div>
+            </div>
         </div>
+       
     </div>
-@*}*@
 
-<div>
-    @Html.ActionLink("Atrás", "Index")
-</div>
+
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

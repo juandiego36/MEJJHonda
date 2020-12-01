@@ -15,7 +15,7 @@ function SeleccionaArticulo(id, descripcion, precio) {
 function ValidaLinea() {
     var id = document.getElementById('IdArticulo').value;
     var cantidad = document.getElementById('CantidadArticulo').value;
-    if (id == null || id == "" || cantidad == null || cantidad == "" ) {
+    if (id === null || id === "" || cantidad === null || cantidad === "" ) {
     console.log("Debe completar los campos de las líneas de detalle");
     } else {
         if (cantidad <= 0 ) {
@@ -95,7 +95,7 @@ function MontosTotales() {
    }
 
 function Registrar() {
-    if (listaArticulos.length == 0) {
+    if (listaArticulos.length === 0) {
         console.log("La factura no tiene detalles");
     } else {
         var detalles = [];
@@ -115,9 +115,7 @@ function Registrar() {
 
     var idCliente = document.getElementById("idCliente").options[document.getElementById("idCliente").selectedIndex].value;
     var observacion = document.getElementById("observacion").value;  
-
-
-
+    
         var encabezado = {
             "IdFacturaE": 0,
             "IdEmpleado": 3,
@@ -156,9 +154,9 @@ function ValidaNumericos(evt, input) {
             return true;
         }
     } else {
-        if (key == 8 || key == 13 || key == 0) {
+        if (key === 8 || key === 13 || key === 0) {
             return true;
-        } else if (key == 46) {
+        } else if (key === 46) {
             if (filter(tempValue) === false) {
                 return false;
             } else {
