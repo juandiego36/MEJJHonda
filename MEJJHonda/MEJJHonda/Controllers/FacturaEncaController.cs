@@ -8,6 +8,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using MejjHonda.Models;
+using Newtonsoft.Json;
 
 namespace MejjHonda.Controllers
 {
@@ -66,6 +67,19 @@ namespace MejjHonda.Controllers
             ViewBag.IdMoneda = new SelectList(db.MEJJ_Moneda, "IdMoneda", "Codigo", mEJJ_FacturaEnca.IdMoneda);
             return View(mEJJ_FacturaEnca);
         }
+
+
+        [HttpPost]
+        public ActionResult GuardarFactura(MEJJ_FacturaEnca mEJJ_FacturaEnca, List<MEJJ_FacturaDeta> mEJJ_FacturaDeta)
+        {
+
+            mEJJ_FacturaEnca.MEJJ_FacturaDeta = mEJJ_FacturaDeta;
+            db.MEJJ_FacturaEnca.Add(mEJJ_FacturaEnca);
+            db.SaveChanges();
+
+            return View(mEJJ_FacturaEnca);
+        }
+
 
 
         // GET: FacturaEnca/Edit/5

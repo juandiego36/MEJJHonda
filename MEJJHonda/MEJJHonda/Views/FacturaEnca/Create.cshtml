@@ -11,7 +11,7 @@
 
 @*@using (Html.BeginForm())
 {*@
-    @Html.AntiForgeryToken()
+    @*@Html.AntiForgeryToken()*@
 
     <div class="form-horizontal">
         <hr />
@@ -20,7 +20,7 @@
         <div class="form-group">
             <label class = "control-label col-md-2">Cliente</label>
             <div class="col-md-10">
-                @Html.DropDownList("IdCliente", null, htmlAttributes: new { @class = "form-control" })
+                @Html.DropDownList("IdCliente", null, htmlAttributes: new { @class = "form-control", @id = "idCliente" })
                 @Html.ValidationMessageFor(model => model.IdCliente, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -36,7 +36,7 @@
         <div class="form-group">
            <label class = "control-label col-md-2">Observación</label>
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Observacion, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.Observacion, new { htmlAttributes = new { @class = "form-control", @id="observacion" } })
                 @Html.ValidationMessageFor(model => model.Observacion, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -161,7 +161,7 @@
 
         <div class="form-group">
                 <div class="col-md-2 col-md-offset-8">
-                    <input type="submit" value="Registrar" class="btn btn-success" onclick="Registrar(model.IdCliente)"/>
+                    <button class="btn btn-success" onclick="Registrar()">Registrar</button>
                 </div>
         </div>
     </div>
@@ -185,7 +185,7 @@
         SeleccionaArticulo(id, descripcion, precio);
         ValidaLinea();
         ValidaNumericos();
-        Registrar(id);
+        Registrar();
 
     });
 
