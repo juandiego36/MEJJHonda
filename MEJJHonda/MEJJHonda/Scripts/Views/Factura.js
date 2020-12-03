@@ -96,9 +96,9 @@ function MontosTotales() {
 
 function Registrar() {
     if (listaArticulos.length === 0) {
+        console.log("La factura no tiene detalles");
     } else {
         var detalles = [];
-        console.log("lista en memoria", listaArticulos);
         $.each(listaArticulos, function (index, campo) {
             detalles.push({
                 "IdFacturaD": 0,
