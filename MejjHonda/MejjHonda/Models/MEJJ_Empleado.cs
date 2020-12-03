@@ -31,7 +31,7 @@ namespace MejjHonda.Models
         [DisplayName("Cédula")]
         public string Cedula { get; set; }
         [EmailAddress(ErrorMessage = "Formato de correo invalido")]
-        [StringLength(20, ErrorMessage = "Maximo 20 digitos")]
+        [StringLength(30, ErrorMessage = "Maximo 30 digitos")]
         [Required(ErrorMessage = "Este campo es nesesario")]
         [DisplayName("e-mail")]
         public string Mail { get; set; }
@@ -54,5 +54,6 @@ namespace MejjHonda.Models
         public virtual ICollection<MEJJ_FacturaEnca> MEJJ_FacturaEnca { get; set; }
 
         public string LoginErrorMessage { get; set; }
+        public string Codigo_Contrasena { get; set; }
     }
 }

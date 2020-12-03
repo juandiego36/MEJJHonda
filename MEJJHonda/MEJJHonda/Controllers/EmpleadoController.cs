@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using MejjHonda.Models;
+using System.Web.Helpers;
 
 namespace MejjHonda.Controllers
 {
@@ -58,6 +59,7 @@ namespace MejjHonda.Controllers
                 }
                 else
                 {
+                    mEJJ_Empleado.Contraseña = Crypto.Hash(mEJJ_Empleado.Contraseña);
                     db.MEJJ_Empleado.Add(mEJJ_Empleado);
                     db.SaveChanges();
                     return RedirectToAction("Index");
@@ -100,6 +102,7 @@ namespace MejjHonda.Controllers
                 }
                 else
                 {
+                    mEJJ_Empleado.Contraseña = Crypto.Hash(mEJJ_Empleado.Contraseña);
                     db.Entry(mEJJ_Empleado).State = EntityState.Modified;
                     db.SaveChanges();
                     return RedirectToAction("Index");
