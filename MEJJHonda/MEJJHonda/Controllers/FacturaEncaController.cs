@@ -27,6 +27,7 @@ namespace MejjHonda.Controllers{
             MEJJ_FacturaEnca mEJJ_FacturaEnca = db.MEJJ_FacturaEnca.Find(id);
             mEJJ_FacturaDeta = (from a in db.MEJJ_FacturaDeta where a.IdFacturaE == id select a).ToList();
             mEJJ_FacturaEnca.MEJJ_FacturaDeta = mEJJ_FacturaDeta;
+            ViewBag.total = Convert.ToDecimal(mEJJ_FacturaEnca.Subtotal) + Convert.ToDecimal(mEJJ_FacturaEnca.Impuesto);
             if (mEJJ_FacturaEnca == null){
                 return HttpNotFound();
             }
