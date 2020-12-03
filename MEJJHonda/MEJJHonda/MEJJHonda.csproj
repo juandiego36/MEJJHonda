@@ -176,7 +176,6 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ClienteController.cs" />
     <Compile Include="Controllers\EmpleadoController.cs" />
-    <Compile Include="Controllers\FacturaDetaController.cs" />
     <Compile Include="Controllers\FacturaEncaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
@@ -2100,15 +2099,8 @@
     <Content Include="Views\Empleado\Details.cshtml" />
     <Content Include="Views\Empleado\Edit.cshtml" />
     <Content Include="Views\Empleado\Index.cshtml" />
-    <Content Include="Views\FacturaDeta\Create.cshtml" />
-    <Content Include="Views\FacturaDeta\Delete.cshtml" />
-    <Content Include="Views\FacturaDeta\Details.cshtml" />
-    <Content Include="Views\FacturaDeta\Edit.cshtml" />
-    <Content Include="Views\FacturaDeta\Index.cshtml" />
     <Content Include="Views\FacturaEnca\Create.cshtml" />
-    <Content Include="Views\FacturaEnca\Delete.cshtml" />
     <Content Include="Views\FacturaEnca\Details.cshtml" />
-    <Content Include="Views\FacturaEnca\Edit.cshtml" />
     <Content Include="Views\FacturaEnca\Index.cshtml" />
     <Content Include="Views\Moneda\Create.cshtml" />
     <Content Include="Views\Moneda\Delete.cshtml" />
