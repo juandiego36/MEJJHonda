@@ -24,26 +24,26 @@ namespace MejjHonda.Models
     
         public int IdCliente { get; set; }
         [Required(ErrorMessage = "Este campo es nesesario")]
-        [Range(0, int.MaxValue, ErrorMessage = "Solo numeros")]
+        [Range(0, int.MaxValue, ErrorMessage = "Solo números")]
         [DisplayName("Cédula")]
         public string Cedula { get; set; }
         [Required(ErrorMessage = "Este campo es nesesario")]
         [DataType(DataType.PhoneNumber)]
-        [Range(0, int.MaxValue, ErrorMessage = "Solo numeros")]
+        [Range(0, int.MaxValue, ErrorMessage = "Solo números")]
         [DisplayName("Teléfono")]
         public string Telefono { get; set; }
         [Required(ErrorMessage = "Este campo es nesesario")]
-        [DisplayName("Dirección ")]
-        [StringLength(70, ErrorMessage = "Maximo 70 digitos")]
+        [DisplayName("Dirección: ")]
+        [StringLength(70, ErrorMessage = "Máximo 70 dígitos")]
         public string Direccion { get; set; }
-        [Range(0, int.MaxValue, ErrorMessage = "Solo numeros")]
+        [Range(0, int.MaxValue, ErrorMessage = "Solo números")]
         [DisplayName("Días de crédito ")]
         public Nullable<int> DiasCredito { get; set; }
         [Required(ErrorMessage = "Este campo es nesesario")]
-        [StringLength(15, ErrorMessage = "Maximo 15 digitos")]
+        [StringLength(15, ErrorMessage = "Máximo 15 dígitos")]
         public string Nombre { get; set; }
-        [EmailAddress(ErrorMessage = "Formato de correo invalido")]
-        [StringLength(30, ErrorMessage = "Maximo 30 digitos")]
+        [EmailAddress(ErrorMessage = "Formato de correo inválido")]
+        [StringLength(30, ErrorMessage = "Máximo 30 dígitos")]
         [Required(ErrorMessage = "Este campo es nesesario")]
         [DisplayName("e-mail")]
         public string Mail { get; set; }
