@@ -99,7 +99,6 @@ function Registrar() {
         console.log("La factura no tiene detalles");
     } else {
         var detalles = [];
-
         $.each(listaArticulos, function (index, campo) {
             detalles.push({
                 "IdFacturaD": 0,
@@ -132,8 +131,7 @@ function Registrar() {
             "IdMoneda": 1
         };  
 
-        $.ajax(
-            {
+        $.ajax({
                 type: "POST",
                 data: JSON.stringify({ mEJJ_FacturaEnca: encabezado, mEJJ_FacturaDeta: detalles}),
                 url: "GuardarFactura",
