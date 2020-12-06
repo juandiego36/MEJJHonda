@@ -60,7 +60,6 @@ namespace MejjHonda.Controllers
         [HttpPost]
         public ActionResult ForgotPassword(string email) {
             string message = "";
-            bool status = false;
 
             using (MejjHondaEntities db = new MejjHondaEntities())
             {
