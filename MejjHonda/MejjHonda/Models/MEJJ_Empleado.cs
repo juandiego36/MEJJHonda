@@ -33,7 +33,7 @@ namespace MejjHonda.Models
         [EmailAddress(ErrorMessage = "Formato de correo invalido")]
         [StringLength(30, ErrorMessage = "Maximo 30 digitos")]
         [Required(ErrorMessage = "Este campo es nesesario")]
-        [DisplayName("e-mail")]
+        [DisplayName("Correo")]
         public string Mail { get; set; }
         [Required(ErrorMessage = "Este campo es nesesario")]
         [DataType(DataType.PhoneNumber)]

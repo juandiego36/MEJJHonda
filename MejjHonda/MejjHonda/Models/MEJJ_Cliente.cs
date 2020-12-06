@@ -33,7 +33,7 @@ namespace MejjHonda.Models
         [DisplayName("Teléfono")]
         public string Telefono { get; set; }
         [Required(ErrorMessage = "Este campo es nesesario")]
-        [DisplayName("Dirección: ")]
+        [DisplayName("Dirección ")]
         [StringLength(70, ErrorMessage = "Máximo 70 dígitos")]
         public string Direccion { get; set; }
         [Range(0, int.MaxValue, ErrorMessage = "Solo números")]
@@ -45,7 +45,7 @@ namespace MejjHonda.Models
         [EmailAddress(ErrorMessage = "Formato de correo inválido")]
         [StringLength(30, ErrorMessage = "Máximo 30 dígitos")]
         [Required(ErrorMessage = "Este campo es nesesario")]
-        [DisplayName("e-mail")]
+        [DisplayName("Correo")]
         public string Mail { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
