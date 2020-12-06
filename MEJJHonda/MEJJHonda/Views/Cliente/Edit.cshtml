@@ -4,12 +4,11 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
     String styleColumn = "padding:0px;float:left";
 }
-<h2>Edit</h2>
+<h2>Editar Cliente</h2>
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
 <div class="form-horizontal">
-    <h4>MEJJ_Cliente</h4>
     <hr />
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     @Html.HiddenFor(model => model.IdCliente)
@@ -61,14 +60,12 @@
             </div>
         </div>
     </div>
-    <div class="form-group col-md-10" style=@styleColumn>
-        <input type="submit" value="Save" class="btn btn-default" />
+    <div class="form-group col-md-12" style=@styleColumn>
+        <input type="submit" value="Registrar" class="fa-pull-right btn btn-success" />
+        @Html.ActionLink(" ", "Index", null, new { @class = "fa-pull-right btn btn-info far fa-arrow-alt-circle-left", @style = "margin-right:10px" })
     </div>
 </div>
 }
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }

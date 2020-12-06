@@ -4,9 +4,8 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
     String styleColumn = "padding:0px;float:left";
 }
-<h2>Details</h2>
+<h2>Detalle de Cliente</h2>
 <div>
-    <h4>MEJJ_Cliente</h4>
     <hr />
     <div class="col-md-12" style=@styleColumn>
         <div class="form-group col-md-6" style=@styleColumn>
@@ -51,7 +50,7 @@
         </div>
     </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.IdCliente }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+<div class="form-group col-md-12" style=@styleColumn>
+    @Html.ActionLink(" ", "Edit", new { id = Model.IdCliente }, new { @class = "fa-pull-right btn btn-info fas fa-edit" })
+    @Html.ActionLink(" ", "Index", null, new { @class = "fa-pull-right btn btn-info far fa-arrow-alt-circle-left", @style = "margin-right:10px" })
+</div>
