@@ -52,6 +52,8 @@ namespace MejjHonda.Controllers
             {
                 db.MEJJ_Cliente.Add(mEJJ_Cliente);
                 db.SaveChanges();
+                TempData["type"] = "success";
+                TempData["message"] = "Se creo exitosamente";
                 return RedirectToAction("Index");
             }
 
@@ -84,6 +86,8 @@ namespace MejjHonda.Controllers
             {
                 db.Entry(mEJJ_Cliente).State = EntityState.Modified;
                 db.SaveChanges();
+                TempData["type"] = "success";
+                TempData["message"] = "Se edito exitosamente";
                 return RedirectToAction("Index");
             }
             return View(mEJJ_Cliente);
@@ -112,6 +116,8 @@ namespace MejjHonda.Controllers
             MEJJ_Cliente mEJJ_Cliente = db.MEJJ_Cliente.Find(id);
             db.MEJJ_Cliente.Remove(mEJJ_Cliente);
             db.SaveChanges();
+            TempData["type"] = "success";
+            TempData["message"] = "Se elimino exitosamente";
             return RedirectToAction("Index");
         }
 

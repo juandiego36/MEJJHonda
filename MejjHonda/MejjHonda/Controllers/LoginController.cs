@@ -36,8 +36,8 @@ namespace MejjHonda.Controllers
                     return RedirectToAction("Index", "Home");
 
                 }else{
-
-                    empleadoModel.LoginErrorMessage = "Contraseña o correo incorrectos";
+                    TempData["type"] = "error";
+                    TempData["message"] = "Contraseña o correo incorrectos";
                     return View("Index", empleadoModel);
 
                 }
@@ -53,6 +53,7 @@ namespace MejjHonda.Controllers
 
         public ActionResult ForgotPassword()
         {
+            Session.Abandon();
             return View();
 
         }
@@ -70,13 +71,15 @@ namespace MejjHonda.Controllers
                     empleado.Codigo_Contrasena = resetCode;
                     db.Configuration.ValidateOnSaveEnabled = false;
                     db.SaveChanges();
-                    message = "Se envio el correo a su cuenta";
+                    TempData["type"] = "success";
+                    TempData["message"] = "Se envio el correo a su cuenta";
                     SendVerificationEmail(email, resetCode);
                     Session["Codigo"] = resetCode;
 
                 }
                 else {
-                    message = "La cuenta no fue encontrada";
+                    TempData["type"] = "error";
+                    TempData["message"] = "La cuenta no fue encontrada";
                 }
             }
                 ViewBag.Message = message;
@@ -118,13 +121,12 @@ namespace MejjHonda.Controllers
         }
 
         public ActionResult ResetPassword() {
-            using (MejjHondaEntities db = new MejjHondaEntities())
+            using (MejjHondaEntities db = new MejjHondaEntities())//
             {
-                if (Session["Codigo"] == null) {
-                    return RedirectToAction("Index");
-                }
-                string codigo = Session["Codigo"].ToString();
-                if (codigo != null) {
+                if (Session["Codigo"] != null)
+                {
+                    string codigo = Session["Codigo"].ToString();
+
                     var empleado = db.MEJJ_Empleado.Where(x => x.Codigo_Contrasena == codigo).FirstOrDefault();
                     if (empleado != null)
                     {
@@ -135,7 +137,7 @@ namespace MejjHonda.Controllers
                     }
                 }      
             }
-            return HttpNotFound();
+            return RedirectToAction("Index");
         }
 
         [HttpPost]
@@ -151,11 +153,12 @@ namespace MejjHonda.Controllers
                     user.Contraseña = Crypto.Hash(model.NewPassword);
                     user.Codigo_Contrasena = "";
                     dc.SaveChanges();
-                    message = "Su contraseña se cambio exitosamente";
+                    TempData["type"] = "success";
+                    TempData["message"] = "Su contraseña se cambio exitosamente";
                 }
             }
-            ViewBag.Message = message;
-            return View(model);
+
+            return RedirectToAction("Index");
         }
 
 

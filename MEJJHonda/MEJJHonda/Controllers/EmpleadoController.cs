@@ -62,6 +62,8 @@ namespace MejjHonda.Controllers
                     mEJJ_Empleado.Contraseña = Crypto.Hash(mEJJ_Empleado.Contraseña);
                     db.MEJJ_Empleado.Add(mEJJ_Empleado);
                     db.SaveChanges();
+                    TempData["type"] = "success";
+                    TempData["message"] = "Se creo exitosamente";
                     return RedirectToAction("Index");
                 }
 
@@ -105,6 +107,8 @@ namespace MejjHonda.Controllers
                     mEJJ_Empleado.Contraseña = Crypto.Hash(mEJJ_Empleado.Contraseña);
                     db.Entry(mEJJ_Empleado).State = EntityState.Modified;
                     db.SaveChanges();
+                    TempData["type"] = "success";
+                    TempData["message"] = "Se edito exitosamente";
                     return RedirectToAction("Index");
                 }
 
@@ -136,6 +140,8 @@ namespace MejjHonda.Controllers
             MEJJ_Empleado mEJJ_Empleado = db.MEJJ_Empleado.Find(id);
             db.MEJJ_Empleado.Remove(mEJJ_Empleado);
             db.SaveChanges();
+            TempData["type"] = "success";
+            TempData["message"] = "Se elimino exitosamente";
             return RedirectToAction("Index");
         }
 

@@ -1,57 +1,49 @@
 ﻿@model MejjHonda.Models.MEJJ_Articulo
-
 @{
     ViewBag.Title = "Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    String styleColumn = "padding:0px;float:left";
 }
-
 <h2>Details</h2>
-
 <div>
     <h4>MEJJ_Articulo</h4>
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Descripcion)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Descripcion)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Modelo)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Modelo)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Precio)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Precio)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Color)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Color)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Tamanio)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Tamanio)
-        </dd>
-
-    </dl>
+    <div class="col-md-12" style=@styleColumn>
+        <div class="form-group col-md-6" style=@styleColumn>
+            @Html.LabelFor(model => model.Descripcion, htmlAttributes: new { @class = "control-label col-md-2", @style = "font-weight: bold" })
+            <div class="col-md-10">
+                <label>@Html.DisplayFor(model => model.Descripcion)</label>
+            </div>
+        </div>
+        <div class="form-group col-md-6" style=@styleColumn>
+            @Html.LabelFor(model => model.Modelo, htmlAttributes: new { @class = "control-label col-md-2", @style = "font-weight: bold" })
+            <div class="col-md-10">
+                <label>@Html.DisplayFor(model => model.Modelo)</label>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12" style=@styleColumn>
+        <div class="form-group col-md-6" style=@styleColumn>
+            @Html.LabelFor(model => model.Precio, htmlAttributes: new { @class = "control-label col-md-2", @style = "font-weight: bold" })
+            <div class="col-md-10">
+                <label>@Html.DisplayFor(model => model.Precio)</label>
+            </div>
+        </div>
+        <div class="form-group col-md-6" style=@styleColumn>
+            @Html.LabelFor(model => model.Color, htmlAttributes: new { @class = "control-label col-md-2", @style = "font-weight: bold" })
+            <div class="col-md-10">
+                <label>@Html.DisplayFor(model => model.Color)</label>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12" style=@styleColumn>
+        <div class="form-group col-md-6" style=@styleColumn>
+            @Html.LabelFor(model => model.Tamanio, htmlAttributes: new { @class = "control-label col-md-2", @style = "font-weight: bold" })
+            <div class="col-md-10">
+                <label>@Html.DisplayFor(model => model.Tamanio)</label>
+            </div>
+        </div>
+    </div>
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.IdArticulo }) |

@@ -33,32 +33,53 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Cedula)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Telefono)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Direccion)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DiasCredito)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nombre)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Mail)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.IdCliente }) |
-            @Html.ActionLink("Details", "Details", new { id=item.IdCliente }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.IdCliente })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cedula)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Telefono)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Direccion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DiasCredito)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Mail)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.IdCliente }) |
+                @Html.ActionLink("Details", "Details", new { id = item.IdCliente }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.IdCliente })
+            </td>
+        </tr>
+    }
 
 </table>
+<span class="d-none" id="message">@TempData["message"]</span>
+<span class="d-none" id="type">@TempData["type"]</span>
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+            var message = $('#message').text()
+            var type = $('#type').text()
+            if (message) {
+                switch (type) {
+                    case 'error':
+                        toastr.error(message);
+                        break;
+                    case 'success':
+                        toastr.success(message);
+                        break;
+                }
+            }
+        })
+    </script>
+}
