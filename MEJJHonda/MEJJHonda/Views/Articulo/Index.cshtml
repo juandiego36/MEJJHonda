@@ -31,28 +31,49 @@
     </tr>
 
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Descripcion)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Modelo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Precio)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Color)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Tamanio)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.IdArticulo }) |
-            @Html.ActionLink("Details", "Details", new { id=item.IdArticulo }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.IdArticulo })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descripcion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Modelo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Precio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Color)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tamanio)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.IdArticulo }) |
+                @Html.ActionLink("Details", "Details", new { id = item.IdArticulo }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.IdArticulo })
+            </td>
+        </tr>
+    }
 </table>
+<span class="d-none" id="message">@TempData["message"]</span>
+<span class="d-none" id="type">@TempData["type"]</span>
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+            var message = $('#message').text()
+            var type = $('#type').text()
+            if (message) {
+                switch (type) {
+                    case 'error':
+                        toastr.error(message);
+                        break;
+                    case 'success':
+                        toastr.success(message);
+                        break;
+                }
+            }
+        })
+    </script>
+}

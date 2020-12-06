@@ -3,5 +3,27 @@
 }
 
 <div class="jumbotron">
-   <p>Aqui se ponen cosas</p>
+    <p>Aqui se ponen cosas</p>
 </div>
+
+
+<span class="d-none" id="message">@TempData["message"]</span>
+<span class="d-none" id="type">@TempData["type"]</span>
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+            var message = $('#message').text()
+            var type = $('#type').text()
+            if (message) {
+                switch (type) {
+                    case 'error':
+                        toastr.error(message);
+                        break;
+                    case 'success':
+                        toastr.success(message);
+                        break;
+                }
+            }
+        })
+    </script>
+}
