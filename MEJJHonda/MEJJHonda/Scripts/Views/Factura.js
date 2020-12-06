@@ -15,11 +15,11 @@ function SeleccionaArticulo(id, descripcion, precio) {
 function ValidaLinea() {
     var id = document.getElementById('IdArticulo').value;
     var cantidad = document.getElementById('CantidadArticulo').value;
-    if (id === null || id === "" || cantidad === null || cantidad === "" ) {
-    console.log("Debe completar los campos de las líneas de detalle");
+    if (id === null || id === "" || cantidad === null || cantidad === "") {
+        toastr.error("Debe completar los campos de las líneas de detalle");
     } else {
-        if (cantidad <= 0 ) {
-    console.log("La cantidad debe de ser mayor a cero");
+        if (cantidad <= 0) {
+            toastr.error("La cantidad debe de ser mayor a cero");
         } else {
     AnadirLinea();
         }
@@ -96,7 +96,7 @@ function MontosTotales() {
 
 function Registrar() {
     if (listaArticulos.length === 0) {
-        console.log("La factura no tiene detalles");
+        toastr.error("La factura no tiene detalles");
     } else {
         var detalles = [];
         $.each(listaArticulos, function (index, campo) {
@@ -137,8 +137,10 @@ function Registrar() {
                 url: "GuardarFactura",
                 contentType: 'application/json; charset=utf-8'
             });
+        location.reload();
+    }
 
-       }
+    
 }
 
 function ValidaNumericos(evt, input) {
