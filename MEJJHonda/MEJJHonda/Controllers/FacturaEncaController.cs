@@ -45,11 +45,23 @@ namespace MejjHonda.Controllers{
         [HttpPost]
         public ActionResult GuardarFactura(MEJJ_FacturaEnca mEJJ_FacturaEnca, List<MEJJ_FacturaDeta> mEJJ_FacturaDeta){
 
+            mEJJ_FacturaEnca.IdEmpleado = Convert.ToInt32(Session["IdEmpleado"]);
             mEJJ_FacturaEnca.MEJJ_FacturaDeta = mEJJ_FacturaDeta;
             db.MEJJ_FacturaEnca.Add(mEJJ_FacturaEnca);
-            db.SaveChanges();
-
-            return View(mEJJ_FacturaEnca);
+            var resultado = db.SaveChanges();
+            if (resultado > 0)
+            {
+                TempData["type"] = "success";
+                TempData["message"] = "Se creo exitosamente";
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                TempData["type"] = "error";
+                TempData["message"] = "No se pudo guardar";
+                return View(mEJJ_FacturaEnca);
+            }
+                
         }
 
         protected override void Dispose(bool disposing) {
