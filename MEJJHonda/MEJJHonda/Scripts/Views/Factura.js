@@ -117,7 +117,7 @@ function Registrar() {
     
         var encabezado = {
             "IdFacturaE": 0,
-            "IdEmpleado": 3,
+            "IdEmpleado": 0,
             "IdCliente": idCliente,
             "Tipo": "Contado",
             "Fecha": new Date().toISOString().slice(0, 10),
@@ -130,7 +130,7 @@ function Registrar() {
             "Impuesto": impuesto,
             "IdMoneda": 1
         };  
-
+        
         $.ajax({
                 type: "POST",
                 data: JSON.stringify({ mEJJ_FacturaEnca: encabezado, mEJJ_FacturaDeta: detalles}),

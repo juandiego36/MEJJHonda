@@ -52,17 +52,16 @@ namespace MejjHonda.Controllers{
             if (resultado > 0)
             {
                 TempData["type"] = "success";
-                TempData["message"] = "Se creo exitosamente";
-                return RedirectToAction("Index");
-            }
-            else
-            {
-                TempData["type"] = "error";
-                TempData["message"] = "No se pudo guardar";
-                return View(mEJJ_FacturaEnca);
-            }
-                
+                TempData["message"] = "La factura se guardó correctamente";
+                return View();
         }
+            else{
+                TempData["type"] = "error";
+                TempData["message"] = "No se pudo guardar la factura, inténte nuevamente";
+                return View(mEJJ_FacturaEnca);
+    }
+
+}
 
         protected override void Dispose(bool disposing) {
             if (disposing) {
