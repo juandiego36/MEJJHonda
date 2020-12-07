@@ -16,9 +16,13 @@ namespace MejjHonda.Controllers
         private MejjHondaEntities db = new MejjHondaEntities();
 
         // GET: Empleado
-        public ActionResult Index()
+        public ActionResult Index(String busqueda)
         {
-            return View(db.MEJJ_Empleado.ToList());
+            return View(
+				!String.IsNullOrEmpty(busqueda) ?
+					db.MEJJ_Empleado.Where(empleado => empleado.Nombre.Contains(busqueda)).ToList()
+				: db.MEJJ_Empleado.ToList()
+			);
         }
 
         // GET: Empleado/Details/5

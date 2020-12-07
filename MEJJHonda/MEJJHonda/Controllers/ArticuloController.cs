@@ -15,9 +15,13 @@ namespace MejjHonda.Controllers
         private MejjHondaEntities db = new MejjHondaEntities();
 
         // GET: MEJJ_Articulo
-        public ActionResult Index()
+        public ActionResult Index(String busqueda)
         {
-            return View(db.MEJJ_Articulo.ToList());
+			return View(
+				!String.IsNullOrEmpty(busqueda) ? 
+					db.MEJJ_Articulo.Where(articulo => articulo.Descripcion.Contains(busqueda)).ToList()
+				: db.MEJJ_Articulo.ToList()
+			);
         }
 
         // GET: MEJJ_Articulo/Details/5

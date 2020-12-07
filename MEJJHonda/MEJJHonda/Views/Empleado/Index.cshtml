@@ -4,8 +4,21 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <h2>Colaboradores</h2>
-<div class="row">
-    <div class="col-sm-2 offset-10 form-group">
+<div class="col-md-12" style="padding:0px">
+    <div class="col-md-5 input-group fa-pull-left">
+        @using (Html.BeginForm())
+        {
+            <input type="text"
+                   name="busqueda"
+                   placeholder="Search for..."
+                   class="navbar-search bg-light border-0"
+                   style="color:#858796;border-width:thin" />
+            <button class="btn btn-primary" type="submit">
+                <i class="fas fa-search fa-sm"></i>
+            </button>
+        }
+    </div>
+    <div class="fa-pull-right col-md-2 form-group">
         @Html.ActionLink("Nuevo", "Create", null, new { @class = "btn btn-primary" })
     </div>
 </div>
@@ -31,28 +44,28 @@
 
     @foreach (var item in Model)
     {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nombre)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Cedula)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Mail)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Telefono)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Direccion)
-        </td>
-        <td>
-            @Html.ActionLink(" ", "Edit", new { id = item.IdEmpleado }, new { @class = "btn btn-info fas fa-edit", title = "Ver", @style = "width:28%" })
-            @Html.ActionLink(" ", "Details", new { id = item.IdEmpleado }, new { @class = "btn btn-info fas fa-fw fa-eye", title = "Ver", @style = "width:28%" })
-            @Html.ActionLink(" ", "Delete", new { id = item.IdEmpleado }, new { @class = "btn btn-info fas fa-trash-alt", title = "Ver", @style = "width:28%" })
-        </td>
-    </tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cedula)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Mail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Telefono)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Direccion)
+            </td>
+            <td>
+                @Html.ActionLink(" ", "Edit", new { id = item.IdEmpleado }, new { @class = "btn btn-info fas fa-edit", title = "Ver", @style = "width:28%" })
+                @Html.ActionLink(" ", "Details", new { id = item.IdEmpleado }, new { @class = "btn btn-info fas fa-fw fa-eye", title = "Ver", @style = "width:28%" })
+                @Html.ActionLink(" ", "Delete", new { id = item.IdEmpleado }, new { @class = "btn btn-info fas fa-trash-alt", title = "Ver", @style = "width:28%" })
+            </td>
+        </tr>
     }
 
 </table>

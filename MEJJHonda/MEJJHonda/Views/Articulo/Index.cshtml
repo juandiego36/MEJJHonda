@@ -4,11 +4,26 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <h2>Productos</h2>
-<div class="row">
-    <div class="col-sm-2 offset-10 form-group">
+<div class="col-md-12" style="padding:0px">
+    <div class="col-md-5 input-group fa-pull-left">
+        @using (Html.BeginForm())
+        {
+            <input 
+                type="text" 
+                name="busqueda" 
+                placeholder="Search for..." 
+                class="navbar-search bg-light border-0"
+                style="color:#858796;border-width:thin"
+            />
+            <button class="btn btn-primary" type="submit">
+                <i class="fas fa-search fa-sm"></i>
+            </button>
+        }
+    </div>
+    <div class="fa-pull-right col-md-2 form-group">
         @Html.ActionLink("Nuevo", "Create", null, new { @class = "btn btn-primary", title = "Nueva factura" })
     </div>
-</div>
+</div> 
 <table class="table">
     <tr>
         <th>
