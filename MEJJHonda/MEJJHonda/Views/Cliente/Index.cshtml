@@ -10,7 +10,7 @@
         {
             <input type="text"
                    name="busqueda"
-                   placeholder="Search for..."
+                   placeholder="Buscar por..."
                    class="navbar-search bg-light border-0"
                    style="color:#858796;border-width:thin" />
             <button class="btn btn-primary" type="submit">
@@ -77,6 +77,9 @@
 </table>
 <span class="d-none" id="message">@TempData["message"]</span>
 <span class="d-none" id="type">@TempData["type"]</span>
+@Html.ActionLink(" ", "ExportToExcel", null, new { @class = "btn btn-primary fas fa-file-excel" })
+@Html.ActionLink(" ", "ExportToPdf", null, new { @class = "btn btn-primary fas fa-file-pdf" })
+@Html.ActionLink(" ", "ExportToWord", null, new { @class = "btn btn-primary fas fa-file-word" })
 @section Scripts{
     <script>
         $(document).ready(function () {

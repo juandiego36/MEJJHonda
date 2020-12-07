@@ -8,13 +8,11 @@
     <div class="col-md-5 input-group fa-pull-left">
         @using (Html.BeginForm())
         {
-            <input 
-                type="text" 
-                name="busqueda" 
-                placeholder="Search for..." 
-                class="navbar-search bg-light border-0"
-                style="color:#858796;border-width:thin"
-            />
+            <input type="text"
+                   name="busqueda"
+                   placeholder="Buscar por..."
+                   class="navbar-search bg-light border-0"
+                   style="color:#858796;border-width:thin" />
             <button class="btn btn-primary" type="submit">
                 <i class="fas fa-search fa-sm"></i>
             </button>
@@ -23,7 +21,7 @@
     <div class="fa-pull-right col-md-2 form-group">
         @Html.ActionLink("Nuevo", "Create", null, new { @class = "btn btn-primary", title = "Nueva factura" })
     </div>
-</div> 
+</div>
 <table class="table">
     <tr>
         <th>
@@ -73,6 +71,9 @@
 </table>
 <span class="d-none" id="message">@TempData["message"]</span>
 <span class="d-none" id="type">@TempData["type"]</span>
+@Html.ActionLink(" ", "ExportToExcel", null, new { @class = "btn btn-primary fas fa-file-excel" })
+@Html.ActionLink(" ", "ExportToPdf", null, new { @class = "btn btn-primary fas fa-file-pdf" })
+@Html.ActionLink(" ", "ExportToWord", null, new { @class = "btn btn-primary fas fa-file-word" })
 @section Scripts{
     <script>
         $(document).ready(function () {

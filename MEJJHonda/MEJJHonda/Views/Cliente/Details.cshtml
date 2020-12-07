@@ -54,3 +54,6 @@
     @Html.ActionLink(" ", "Edit", new { id = Model.IdCliente }, new { @class = "fa-pull-right btn btn-info fas fa-edit" })
     @Html.ActionLink(" ", "Index", null, new { @class = "fa-pull-right btn btn-info far fa-arrow-alt-circle-left", @style = "margin-right:10px" })
 </div>
+@Html.ActionLink(" ", "ExportToExcel", new { id = Model.IdCliente }, new { @class = "btn btn-primary fas fa-file-excel" })
+@Html.ActionLink(" ", "ExportToPdf", new { id = Model.IdCliente }, new { @class = "btn btn-primary fas fa-file-pdf" })
+@Html.ActionLink(" ", "ExportToWord", new { id = Model.IdCliente }, new { @class = "btn btn-primary fas fa-file-word" })
