@@ -19,7 +19,7 @@
         }
     </div>
     <div class="fa-pull-right col-md-2 form-group">
-        @Html.ActionLink("Nuevo", "Create", null, new { @class = "btn btn-primary" })
+        @Html.ActionLink("Nuevo", "Create", null, new { @class = "btn btn-primary", title = "Nuevo Cliente" })
     </div>
 </div>
 <table class="table">
@@ -28,16 +28,10 @@
             @Html.DisplayNameFor(model => model.Cedula)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Telefono)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Direccion)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DiasCredito)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Telefono)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Mail)
@@ -47,37 +41,32 @@
 
     @foreach (var item in Model)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Cedula)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Telefono)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Direccion)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DiasCredito)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nombre)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Mail)
-            </td>
-            <td>
-                @Html.ActionLink(" ", "Edit", new { id = item.IdCliente }, new { @class = "btn btn-success fas fa-edit", title = "Ver", @style = "width:30%" })
-                @Html.ActionLink(" ", "Delete", new { id = item.IdCliente }, new { @class = "btn btn-danger fas fa-trash-alt", title = "Ver", @style = "width:30%" })
-                @Html.ActionLink(" ", "Details", new { id = item.IdCliente }, new { @class = "btn btn-info fas fa-fw fa-eye", title = "Ver", @style = "width:30%" })
-            </td>
-        </tr>
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cedula)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Telefono)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Mail)
+        </td>
+        <td>
+            @Html.ActionLink(" ", "Edit", new { id = item.IdCliente }, new { @class = "btn btn-success fas fa-edit", title = "Editar", @style = "width:30%" })
+            @Html.ActionLink(" ", "Delete", new { id = item.IdCliente }, new { @class = "btn btn-danger fas fa-trash-alt", title = "Eliminar", @style = "width:30%" })
+            @Html.ActionLink(" ", "Details", new { id = item.IdCliente }, new { @class = "btn btn-info fas fa-fw fa-eye", title = "Ver", @style = "width:30%" })
+        </td>
+    </tr>
     }
 
 </table>
 <span class="d-none" id="message">@TempData["message"]</span>
 <span class="d-none" id="type">@TempData["type"]</span>
-<h2>Descargar como</h2>
+<hr />
+<h5>Descargar como</h5>
 @Html.ActionLink(" ", "ExportToExcel", null, new { @class = "btn btn-primary fas fa-file-excel" })
 @Html.ActionLink(" ", "ExportToPdf", null, new { @class = "btn btn-primary fas fa-file-pdf" })
 @Html.ActionLink(" ", "ExportToWord", null, new { @class = "btn btn-primary fas fa-file-word" })
