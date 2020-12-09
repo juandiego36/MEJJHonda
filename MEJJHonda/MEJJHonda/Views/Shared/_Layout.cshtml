@@ -92,12 +92,12 @@
                 </a>
             </li>
             <hr class="sidebar-divider">
-            <li class="nav-item active">
+            @*<li class="nav-item active">
                 <a class="nav-link" href="index.html">
                     <i class="fas fa-fw fa-check"></i>
                     <span>Reportes</span>
                 </a>
-            </li>
+            </li>*@
             <div class="text-center d-none d-md-inline">
                 <button class="rounded-circle border-0" id="sidebarToggle"></button>
             </div>
@@ -159,7 +159,7 @@
                 </nav>
                 <!-- End of Topbar -->
 
-                <div style="padding:5%" id="page_content">
+                <div style="padding:1%" id="page_content">
                     @RenderBody()
                 </div>
 
@@ -221,5 +221,5 @@
 </body>
 
 </html>
-@RenderSection("scripts", required: false);
-@RenderSection("messages", required: false);
+@RenderSection("scripts", required: false)
+@RenderSection("messages", required: false)
