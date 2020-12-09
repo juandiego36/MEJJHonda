@@ -285,7 +285,10 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Img\excel.png" />
     <Content Include="Content\Img\HondaIcon.jpg" />
+    <Content Include="Content\Img\pdf.png" />
+    <Content Include="Content\Img\word.png" />
     <Content Include="Content\Styles\layout.css" />
     <Content Include="Content\Styles\Login.css" />
     <Content Include="favicon.ico" />

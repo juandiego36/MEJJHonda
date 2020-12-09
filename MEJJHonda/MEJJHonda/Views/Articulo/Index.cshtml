@@ -62,16 +62,17 @@
                 @Html.DisplayFor(modelItem => item.Tamanio)
             </td>
             <td>
-                @Html.ActionLink(" ", "Edit", new { id = item.IdArticulo }, new { @class = "btn btn-info fas fa-edit", title = "Ver", @style = "width:20%" })
+                @Html.ActionLink(" ", "Edit", new { id = item.IdArticulo }, new { @class = "btn btn-success fas fa-edit", title = "Ver", @style = "width:20%" })
+                @Html.ActionLink(" ", "Delete", new { id = item.IdArticulo }, new { @class = "btn btn-danger fas fa-trash-alt", title = "Ver", @style = "width:20%" })
                 @Html.ActionLink(" ", "Details", new { id = item.IdArticulo }, new { @class = "btn btn-info fas fa-fw fa-eye", title = "Ver", @style = "width:20%" })
-                @Html.ActionLink(" ", "Delete", new { id = item.IdArticulo }, new { @class = "btn btn-info fas fa-trash-alt", title = "Ver", @style = "width:20%" })
             </td>
         </tr>
     }
 </table>
 <span class="d-none" id="message">@TempData["message"]</span>
 <span class="d-none" id="type">@TempData["type"]</span>
-@Html.ActionLink(" ", "ExportToExcel", null, new { @class = "btn btn-primary fas fa-file-excel" })
+<h2>Descargar como</h2>
+@Html.ActionLink(" ", "ExportToExcel", null, new { @style = "background:url('~/Content/Img/excel.png')" })
 @Html.ActionLink(" ", "ExportToPdf", null, new { @class = "btn btn-primary fas fa-file-pdf" })
 @Html.ActionLink(" ", "ExportToWord", null, new { @class = "btn btn-primary fas fa-file-word" })
 @section Scripts{

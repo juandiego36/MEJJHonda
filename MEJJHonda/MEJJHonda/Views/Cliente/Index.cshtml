@@ -67,9 +67,9 @@
                 @Html.DisplayFor(modelItem => item.Mail)
             </td>
             <td>
-                @Html.ActionLink(" ", "Edit", new { id = item.IdCliente }, new { @class = "btn btn-info fas fa-edit", title = "Ver", @style = "width:30%" })
+                @Html.ActionLink(" ", "Edit", new { id = item.IdCliente }, new { @class = "btn btn-success fas fa-edit", title = "Ver", @style = "width:30%" })
+                @Html.ActionLink(" ", "Delete", new { id = item.IdCliente }, new { @class = "btn btn-danger fas fa-trash-alt", title = "Ver", @style = "width:30%" })
                 @Html.ActionLink(" ", "Details", new { id = item.IdCliente }, new { @class = "btn btn-info fas fa-fw fa-eye", title = "Ver", @style = "width:30%" })
-                @Html.ActionLink(" ", "Delete", new { id = item.IdCliente }, new { @class = "btn btn-info fas fa-trash-alt", title = "Ver", @style = "width:30%" })
             </td>
         </tr>
     }
@@ -77,6 +77,7 @@
 </table>
 <span class="d-none" id="message">@TempData["message"]</span>
 <span class="d-none" id="type">@TempData["type"]</span>
+<h2>Descargar como</h2>
 @Html.ActionLink(" ", "ExportToExcel", null, new { @class = "btn btn-primary fas fa-file-excel" })
 @Html.ActionLink(" ", "ExportToPdf", null, new { @class = "btn btn-primary fas fa-file-pdf" })
 @Html.ActionLink(" ", "ExportToWord", null, new { @class = "btn btn-primary fas fa-file-word" })
