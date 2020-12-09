@@ -3,13 +3,10 @@
 @{
     ViewBag.Title = "Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    String styleColumn = "padding:0px;float:left";
 }
-
-<ol class="breadcrumb text-right">
-    <li><a @Html.ActionLink("Atrás", "Index")>Factura</a></li>
-</ol>
-
 <h2>Factura</h2>
+
 <div>
     <hr />
     <div class="form-group">
@@ -79,7 +76,9 @@
         </table>
         <!-- End Detalles Factura -->
     </div>
-
+</div>
+<div class="form-group col-md-12" style=@styleColumn>
+ @Html.ActionLink(" ", "Index", null, new { @class = "fa-pull-right btn btn-info far fa-arrow-alt-circle-left", @style = "margin-right:10px", title = "Atrás" })
 </div>
 
 

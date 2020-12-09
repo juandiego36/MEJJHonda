@@ -4,11 +4,8 @@
 
     ViewBag.Title = "Create";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    String styleColumn = "padding:0px;float:left";
 }
-
-<ol class="breadcrumb text-left">
-    <li><a @Html.ActionLink("Atrás", "Index")>Generar Factura</a></li>
-</ol>
 
 <h2>Generar Factura</h2>
 
@@ -64,16 +61,16 @@
                         <td>
                             <input class="form-control" type="text" id="NameArticulo" disabled>
                         </td>
-                        <td >
+                        <td>
                             <input class="form-control" type="text" id="IdArticulo" disabled>
                         </td>
                         <td>
                             <input class="form-control" type="text" id="PriceArticulo" disabled>
                         </td>
-                        <td >
+                        <td>
                             <input class="form-control" type="text" id="CantidadArticulo" onkeypress="return ValidaNumericos(event, this)" maxlength="3">
                         </td>
-                        <td >
+                        <td>
                             <div class="example-box-wrapper" style="height:30px">
                                 <a class="btn btn-outline-success" title="Agregar artículo" onclick="ValidaLinea()">
                                     <i class="fas fa-fw fa-plus"></i>
@@ -157,11 +154,13 @@
         </div>
         <!-- End Modal artículos -->
     </div>
-
-    <div class="row">
+    <div class="row" >
         <div class="col-sm-6 offset-10">
             <div class="form-group">
-                <div class="col-md-2 col-md-offset-8">
+                <div class="col-md-2 col-md-offset-5" style=@styleColumn>
+                    @Html.ActionLink(" ", "Index", null, new { @class = "fa-pull-right btn btn-info far fa-arrow-alt-circle-left", @style = "margin-right:10px" })
+                </div>
+                <div class="col-md-2 col-md-offset-7" style=@styleColumn>
                     <button class="btn btn-success" title="Guardar" onclick="Registrar()">Registrar</button>
                 </div>
             </div>
