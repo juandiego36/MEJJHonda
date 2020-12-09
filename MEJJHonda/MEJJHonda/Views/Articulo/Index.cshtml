@@ -72,7 +72,7 @@
 <span class="d-none" id="message">@TempData["message"]</span>
 <span class="d-none" id="type">@TempData["type"]</span>
 <h2>Descargar como</h2>
-@Html.ActionLink(" ", "ExportToExcel", null, new { @style = "background:url('~/Content/Img/excel.png')" })
+@Html.ActionLink(" ", "ExportToExcel", null, new { @class = "btn btn-primary fas fa-file-excel" })
 @Html.ActionLink(" ", "ExportToPdf", null, new { @class = "btn btn-primary fas fa-file-pdf" })
 @Html.ActionLink(" ", "ExportToWord", null, new { @class = "btn btn-primary fas fa-file-word" })
 @section Scripts{
