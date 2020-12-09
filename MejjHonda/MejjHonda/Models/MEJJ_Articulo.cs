@@ -26,20 +26,20 @@ namespace MejjHonda.Models
         public int IdArticulo { get; set; }
         [Required(ErrorMessage = "Este campo es nesesario")]
         [DisplayName("Descripción")]
-        [StringLength(100, ErrorMessage = "Maximo 100 digitos")]
+        [StringLength(100, ErrorMessage = "Máximo 100 dígitos")]
         public string Descripcion { get; set; }
         [Required(ErrorMessage = "Este campo es nesesario")]
-        [DisplayName("Modelos")]
-        [StringLength(50, ErrorMessage = "Maximo 10 digitos")]
+        [DisplayName("Modelo")]
+        [StringLength(50, ErrorMessage = "Máximo 10 dígitos")]
         public string Modelo { get; set; }
-        [Range(0, int.MaxValue, ErrorMessage = "Solo numeros")]
+        [Range(0, int.MaxValue, ErrorMessage = "Solo números")]
         public Nullable<decimal> Precio { get; set; }
         [Required(ErrorMessage = "Este campo es nesesario")]
-        [StringLength(10, ErrorMessage = "Maximo 10 digitos")]
+        [StringLength(10, ErrorMessage = "Máximo 10 dígitos")]
         public string Color { get; set; }
         [Required(ErrorMessage = "Este campo es nesesario")]
         [DisplayName("Tamaño")]
-        [Range(0, int.MaxValue, ErrorMessage = "Solo numeros")]
+        [Range(0, int.MaxValue, ErrorMessage = "Sólo números")]
         public string Tamanio { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
