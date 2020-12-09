@@ -291,12 +291,11 @@
     <Content Include="Content\Img\IMG002.png" />
     <Content Include="Content\Img\IMG003.png" />
     <Content Include="Content\Img\IMG004.png" />
-    <Content Include="Content\Img\IMG005.png" />
     <Content Include="Content\Img\IMG006.png" />
     <Content Include="Content\Img\IMG007.png" />
     <Content Include="Content\Img\IMG008.png" />
     <Content Include="Content\Img\IMG009.png" />
-    <Content Include="Content\Img\IMG010.png" />
+    <Content Include="Content\Img\IMG005.png" />
     <Content Include="Content\Img\pdf.png" />
     <Content Include="Content\Img\word.png" />
     <Content Include="Content\Styles\layout.css" />
