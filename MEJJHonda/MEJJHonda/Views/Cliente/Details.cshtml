@@ -51,9 +51,12 @@
     </div>
 </div>
 <div class="form-group col-md-12" style=@styleColumn>
-    @Html.ActionLink(" ", "Edit", new { id = Model.IdCliente }, new { @class = "fa-pull-right btn btn-info fas fa-edit" })
-    @Html.ActionLink(" ", "Index", null, new { @class = "fa-pull-right btn btn-info far fa-arrow-alt-circle-left", @style = "margin-right:10px" })
+    @Html.ActionLink(" ", "Edit", new { id = Model.IdCliente }, new { @class = "fa-pull-right btn btn-success fas fa-edit", title = "Editar" })
+    @Html.ActionLink(" ", "Index", null, new { @class = "fa-pull-right btn btn-info far fa-arrow-alt-circle-left", @style = "margin-right:10px", title = "Atrás" })
 </div>
-@Html.ActionLink(" ", "ExportToExcel", new { id = Model.IdCliente }, new { @class = "btn btn-primary fas fa-file-excel" })
-@Html.ActionLink(" ", "ExportToPdf", new { id = Model.IdCliente }, new { @class = "btn btn-primary fas fa-file-pdf" })
-@Html.ActionLink(" ", "ExportToWord", new { id = Model.IdCliente }, new { @class = "btn btn-primary fas fa-file-word" })
+<h5>Descargar como</h5>
+<div class="row">
+    @Html.ActionLink(" ", "ExportToExcel", new { id = Model.IdCliente }, new { @class = "", @style = "background:url('../../Content/Img/excel.png') no-repeat center right; display:block; height: 30px; width: 50px", title = "Exportar excel" })
+    @Html.ActionLink(" ", "ExportToPdf", new { id = Model.IdCliente }, new { @class = "", @style = "background:url('../../Content/Img/pdf.png') no-repeat center right; display:block; height: 30px; width: 50px", title = "Exportar PDF" })
+    @Html.ActionLink(" ", "ExportToWord", new { id = Model.IdCliente }, new { @class = "", @style = "background:url('../../Content/Img/word.png') no-repeat center right; display:block; height: 30px; width: 50px", title = "Exportar word" })
+</div>

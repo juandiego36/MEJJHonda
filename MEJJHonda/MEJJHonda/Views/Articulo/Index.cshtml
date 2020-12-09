@@ -5,19 +5,22 @@
 }
 <h2>Artículos</h2>
 <div class="col-md-12" style="padding:0px">
-    <div class="col-md-5 input-group fa-pull-left">
-        @using (Html.BeginForm())
-        {
+    @using (Html.BeginForm())
+    {
+        <div class="col-md-5 input-group fa-pull-left">
+
             <input type="text"
                    name="busqueda"
                    placeholder="Buscar por..."
-                   class="navbar-search bg-light border-0"
+                   class="form-control navbar-search bg-light border-0"
                    style="color:#858796;border-width:thin" />
-            <button class="btn btn-primary" type="submit">
+            <button class="btn btn-primary" type="submit" title="Buscar">
                 <i class="fas fa-search fa-sm"></i>
             </button>
-        }
-    </div>
+
+        </div>
+    }
+
     <div class="fa-pull-right col-md-2 form-group">
         @Html.ActionLink("Nuevo", "Create", null, new { @class = "btn btn-primary", title = "Nuevo Artículo" })
     </div>
@@ -39,7 +42,9 @@
         <th>
             @Html.DisplayNameFor(model => model.Tamanio)
         </th>
-        <th></th>
+        <th>
+            Opciones
+        </th>
     </tr>
 
 
@@ -73,9 +78,12 @@
 <span class="d-none" id="type">@TempData["type"]</span>
 <hr />
 <h5>Descargar como</h5>
-@Html.ActionLink(" ", "ExportToExcel", null, new { @class = "btn btn-primary fas fa-file-excel" })
-@Html.ActionLink(" ", "ExportToPdf", null, new { @class = "btn btn-primary fas fa-file-pdf" })
-@Html.ActionLink(" ", "ExportToWord", null, new { @class = "btn btn-primary fas fa-file-word" })
+<div class="row">
+    @Html.ActionLink(" ", "ExportToExcel", null, new { @class = "", @style = "background:url('../Content/Img/excel.png') no-repeat center right; display:block; height: 30px; width: 50px", title = "Exportar excel" })
+    @Html.ActionLink(" ", "ExportToPdf", null, new { @class = "", @style = "background:url('../Content/Img/pdf.png') no-repeat center right; display:block; height: 30px; width: 50px", title = "Exportar PDF" })
+    @Html.ActionLink(" ", "ExportToWord", null, new { @class = "", @style = "background:url('../Content/Img/word.png') no-repeat center right; display:block; height: 30px; width: 50px", title = "Exportar word" })
+
+</div>
 @section Scripts{
     <script>
         $(document).ready(function () {
@@ -94,3 +102,4 @@
         })
     </script>
 }
+
