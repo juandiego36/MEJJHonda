@@ -6,7 +6,7 @@
 
         Response.Redirect("~/Login/Index");
     }
-    String menuStyle = "color:white;width:100%;margin:15px;text-align:left";
+
 }
 <!DOCTYPE html>
 <html lang="en">
@@ -26,6 +26,7 @@
     <!-- Custom styles for this template-->
     <link href="~/Content/Styles/layout.css" rel="stylesheet">
     <link href="~/Content/toastr.css" rel="stylesheet" />
+    <link href="~/Content/Styles/Loading.css" rel="stylesheet" />
 </head>
 
 <body id="page-top">
@@ -134,19 +135,26 @@
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <div>
                                     <i class="fas fa-users"></i>
-                                    <span class="mr-2 d-none d-lg-inline text-gray-600 small ">
-                                        @if (Session["Nombre"] != null)
-                                        {@Session["Nombre"].ToString()}
-                                    </span>
+                                    @if (Session["Nombre"] != null)
+                                    {
+                                        <span class="mr-2 d-none d-lg-inline text-gray-600 small ">
+
+                                            @Session["Nombre"].ToString()
+                                        </span>
+                                    }
                                 </div>
 
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Profile
-                                </a>
+                                @if (Session["Nombre"] != null)
+                                {
+                                    <a class="dropdown-item" href="@Url.Action("Details", "Empleado", new { id = @Session["IdEmpleado"].ToString() })">
+                                        <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                        Profile
+                                    </a>
+                                }
+
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
@@ -215,9 +223,12 @@
         <!-- Custom scripts for all pages-->
         <script src="~/Scripts/Views/Layout.js"></script>
         <script src="~/Scripts/toastr.js"></script>
+        <script src="~/Scripts/Views/Loading.js"></script>
 
     </div>
-
+    <div class="loader-wrapper">
+        <span class="loader"><span class="loader-inner"></span></span>
+    </div>
 </body>
 
 </html>

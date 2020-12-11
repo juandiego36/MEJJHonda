@@ -29,6 +29,7 @@
     <!-- Custom styles for this template-->
     <link href="~/Content/Styles/Login.css" rel="stylesheet">
     <link href="~/Content/toastr.css" rel="stylesheet" />
+    <link href="~/Content/Styles/Loading.css" rel="stylesheet" />
 
 </head>
 
@@ -45,11 +46,14 @@
     <script src="~/Scripts/jquery.validate.min.js"></script>
     <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
     <script src="~/Scripts/bootstrap.bundle.min.js"></script>
-
+    <script src="~/Scripts/Views/Loading.js"></script>
     <!-- Core plugin JavaScript-->
     <script src="~/Scripts/jquery-easing/jquery.easing.min.js"></script>
     <script src="~/Scripts/toastr.js"></script>
-    @RenderSection("scripts", required: false)
+        <div class="loader-wrapper">
+            <span class="loader"><span class="loader-inner"></span></span>
+        </div>
+        @RenderSection("scripts", required: false)
 
 </body>
 

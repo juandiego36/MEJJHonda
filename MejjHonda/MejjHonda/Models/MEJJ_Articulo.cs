@@ -39,7 +39,6 @@ namespace MejjHonda.Models
         public string Color { get; set; }
         [Required(ErrorMessage = "Este campo es nesesario")]
         [DisplayName("Tamaño")]
-        [Range(0, int.MaxValue, ErrorMessage = "Sólo números")]
         public string Tamanio { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

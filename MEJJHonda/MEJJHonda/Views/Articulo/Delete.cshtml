@@ -46,7 +46,7 @@
     @using (Html.BeginForm())
     {
         @Html.AntiForgeryToken()
-        <div class="form-group col-md-12" style=@styleColumn>
+        <div onclick="onLoad()" class="form-group col-md-12" style=@styleColumn>
             <button type="submit" title="Eliminar" class="fa-pull-right btn btn-danger fas fa-trash-alt"></button>
             @Html.ActionLink(" ", "Index", null, new { @class = "fa-pull-right btn btn-info far fa-arrow-alt-circle-left", @style = "margin-right:10px", title = "Atrás" })
         </div>

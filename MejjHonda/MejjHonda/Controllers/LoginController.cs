@@ -17,7 +17,11 @@ namespace MejjHonda.Controllers
         // GET: Login
         public ActionResult Index()
         {
-            Session.Abandon();
+            if (Session["IdEmpleado"] == null)
+            {
+                Session.Abandon();
+            }
+           
             return View();
         }
 
@@ -117,7 +121,8 @@ namespace MejjHonda.Controllers
                 Body = body,
                 IsBodyHtml = true
             })
-                smtp.Send(message);
+            
+            smtp.Send(message);
         }
 
         public ActionResult ResetPassword() {
