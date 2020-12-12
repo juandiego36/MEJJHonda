@@ -17,7 +17,7 @@ namespace MejjHonda.Controllers
 			double tarifaFijaBac = 6.7;
 			double tarifaFijaNacional = 8;
 			double tarifaFijaScotiabank = 6.9;
-			double prima = 10 * precio / 100;
+			double prima = Math.Round(10 * precio / 100);
 			List<int> plazos = new List<int>();
 			plazos.Add(12);
 			plazos.Add(18);
