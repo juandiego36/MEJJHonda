@@ -53,4 +53,7 @@
     @Html.ActionLink(" ", "ExportToExcel", new { id = Model.IdArticulo }, new { @class = "", @style = "background:url('../../Content/Img/excel.png') no-repeat center right; display:block; height: 30px; width: 50px", title = "Exportar excel" })
     @Html.ActionLink(" ", "ExportToPdf", new { id = Model.IdArticulo }, new { @class = "", @style = "background:url('../../Content/Img/pdf.png') no-repeat center right; display:block; height: 30px; width: 50px", title = "Exportar PDF" })
     @Html.ActionLink(" ", "ExportToWord", new { id = Model.IdArticulo }, new { @class = "", @style = "background:url('../../Content/Img/word.png') no-repeat center right; display:block; height: 30px; width: 50px", title = "Exportar word" })
+    @Html.ActionLink("Calcular Venta", "Index", "CalculoDeVenta", new { precio = Model.Precio }, new { @class = "btn btn-primary", @style = "margin-left:355px"})
 </div>
+
+

@@ -221,6 +221,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\CalculoDeVentaController.cs" />
     <Compile Include="Controllers\ClienteController.cs" />
     <Compile Include="Controllers\EmpleadoController.cs" />
     <Compile Include="Controllers\FacturaEncaController.cs" />
@@ -231,6 +232,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Banco.cs" />
     <Compile Include="Models\MejjHonda.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -285,21 +287,11 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\Img\excel.png" />
+    <Content Include="Content\Img\BacLogo.png" />
     <Content Include="Content\Img\HondaIcon.jpg" />
-    <Content Include="Content\Img\IMG001.png" />
-    <Content Include="Content\Img\IMG002.png" />
-    <Content Include="Content\Img\IMG003.png" />
-    <Content Include="Content\Img\IMG004.png" />
-    <Content Include="Content\Img\IMG006.png" />
-    <Content Include="Content\Img\IMG007.png" />
-    <Content Include="Content\Img\IMG008.png" />
-    <Content Include="Content\Img\IMG009.png" />
-    <Content Include="Content\Img\IMG005.png" />
-    <Content Include="Content\Img\pdf.png" />
-    <Content Include="Content\Img\word.png" />
+    <Content Include="Content\Img\NacionalLogo.png" />
+    <Content Include="Content\Img\ScotiabankLogo.png" />
     <Content Include="Content\Styles\layout.css" />
-    <Content Include="Content\Styles\Loading.css" />
     <Content Include="Content\Styles\Login.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -2121,7 +2113,6 @@
     <Content Include="Scripts\umd\popper.min.js" />
     <Content Include="Scripts\Views\Factura.js" />
     <Content Include="Scripts\Views\Layout.js" />
-    <Content Include="Scripts\Views\Loading.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -2170,10 +2161,12 @@
     <Content Include="Views\Moneda\Index.cshtml" />
     <Content Include="Views\Login\ForgotPassword.cshtml" />
     <Content Include="Views\Login\ResetPassword.cshtml" />
-    <Content Include="Views\Shared\_LoginLayout.cshtml" />
+    <Content Include="Views\Shared\_LayoutLogin.cshtml" />
+    <Content Include="Views\CalculoDeVenta\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Reportes\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

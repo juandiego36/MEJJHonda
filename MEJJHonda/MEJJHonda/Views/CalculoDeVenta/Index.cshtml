@@ -1,0 +1,85 @@
+﻿@model List<MejjHonda.Models.Banco>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div>
+    @foreach (var banco in Model)
+    {
+        <div class="form-group col-md-12"
+             style="border:solid;padding:5px;color:black;border-color:#808080;display:flex">
+            <div class="col-md-7" style="float:left;margin-left:50px">
+                <div class="col-md-12" style="margin-bottom:25px">
+                    <img src="~/Content/Img/@banco.logo" width="300" height="70">
+                </div>
+                <div class="col-md-12">
+                    <div class="col-md-2" style="float:left">
+                        <label>Tasa fija:</label>
+                    </div>
+                    <div class="col-md-10" style="float:left;font-weight:bold">
+                        <label>@banco.tasaFija %</label>
+                    </div>
+                </div>
+                <div class="col-md-12" style="display:flex">
+                    <div class="col-md-2" style="float:left;margin-top:5px">
+                        <label>Prima (₡):</label>
+                    </div>
+                    <div class="col-md-7" style="float:left">
+                        @using (Html.BeginForm("Recalcular", "CalculoDeVenta"))
+                        {
+                            <div class="input-group">
+                                <input type="number" name="prima" class="form-control" value=@banco.prima>
+                                <span class="input-group-btn">
+                                    <button class="btn btn-info" type="submit">
+                                        <i class="fas fa-arrow-alt-circle-right"></i>
+                                    </button>
+                                </span>
+                                <input name="bancoName" value=@banco.name style="display:none" />
+                            </div>
+                        }
+                    </div>
+                </div>
+                <div class="col-md-12" style="margin-top:10px;display:flex">
+                    <div class="col-md-2" style="float:left">
+                        <label>Plazo: </label>
+                    </div>
+                    <div class="col-md-10" style="float:left">
+                        @using (Html.BeginForm("RecalcularPlazo", "CalculoDeVenta"))
+                        {
+                            foreach (var plazo in banco.plazos)
+                            {
+                                <input type="radio"
+                                       id=@(plazo + banco.name + "Id")
+                                       name=@(banco.name + "Plazo")
+                                       value=@plazo
+                                       checked=@(plazo == banco.plazo)
+                                       onchange='this.form.submit();'>
+                                <label for=@(plazo + banco.name + "Id")>@(plazo + " meses")</label><br>
+                                <input name="bancoName" value=@banco.name style="display:none" />
+                            }
+                        }
+                    </div>
+                </div>
+                <div class="col-md-12" style="margin-top:10px;font-size:12px">
+                    <p>
+                        @foreach (var descripcion in banco.descripciones)
+                        {
+                            <div>
+                                @descripcion
+                            </div>
+                        }
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-5" style="float:left;padding-top:100px;text-align:center">
+                <div class="col-md-12">
+                    <label>Cuota Mensual:</label>
+                </div>
+                <div class="col-md-12">
+                    <labels style="color:#4e73df;font-size:40px">₡@banco.cuotaMensual</labels>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+@Html.ActionLink(" ", "Index", "Articulo", null, new { @class = "fa-pull-right btn btn-info far fa-arrow-alt-circle-left", @style = "margin-right:10px", title = "Atrás" })
