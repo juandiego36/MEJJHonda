@@ -31,6 +31,11 @@ namespace MejjHonda.Controllers
             using (MejjHondaEntities db = new MejjHondaEntities()) {
                 
                 var empleadoDetails = db.MEJJ_Empleado.Where(x => x.Mail == empleadoModel.Mail).FirstOrDefault();
+                if (empleadoDetails == null) {
+                    TempData["type"] = "error";
+                    TempData["message"] = "Contraseña o correo incorrectos";
+                    return View("Index", empleadoModel);
+                }
                 if (string.Compare(Crypto.Hash(empleadoModel.Contraseña), empleadoDetails.Contraseña) == 0)
                 {
                     Session["IdEmpleado"] = empleadoDetails.IdEmpleado;
