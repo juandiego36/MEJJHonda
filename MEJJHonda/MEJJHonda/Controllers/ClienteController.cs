@@ -199,7 +199,25 @@ namespace MejjHonda.Controllers
 					table.AddCell(new Phrase(data["Mail"].ToString(), font2));
 					pdfRowIndex++;
 				}
+				document.Add(
+					new Phrase(
+						String.Concat("Solicitante: ", Session["Nombre"] != null ? Session["Nombre"].ToString() : ""),
+						font2
+					)
+				);
+				document.Add(
+					new Phrase(
+						"Fecha: " + DateTime.Now.ToString(),
+						font2
+					)
+				);
 				document.Add(table);
+				document.Add(
+					new Phrase(
+						"Empresa: MEJJ",
+						font2
+					)
+				);
 				document.Close();
 				document.CloseDocument();
 				document.Dispose();
@@ -232,6 +250,12 @@ namespace MejjHonda.Controllers
 			if (dtClientes.Rows.Count > 0)
 			{
 				StringBuilder sbDocumentBody = new StringBuilder();
+				sbDocumentBody.Append(
+					String.Concat(
+						"Solicitante: ",
+						Session["Nombre"] != null ? Session["Nombre"].ToString() : "")
+				);
+				sbDocumentBody.Append("Fecha: " + DateTime.Now.ToString());
 				sbDocumentBody.Append("<table width=\"100%\" style=\"background-color:#ffffff;\">");
 				if (dtClientes.Rows.Count > 0)
 				{
@@ -257,6 +281,7 @@ namespace MejjHonda.Controllers
 					sbDocumentBody.Append("</table>");
 					sbDocumentBody.Append("</td></tr></table>");
 				}
+				sbDocumentBody.Append("Empresa: MEJJ");
 				Response.Clear();
 				Response.Buffer = true;
 				Response.AppendHeader("Content-Type", "application/msword");

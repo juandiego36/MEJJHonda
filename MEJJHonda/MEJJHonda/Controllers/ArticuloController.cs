@@ -142,9 +142,17 @@ namespace MejjHonda.Controllers
 		public ActionResult ExportToExcel(int? id)
 		{
 			DataTable dtArticulos = getArticulosToExport(id);
+			//DataTable dtEncabezado = getEncabezado();
+			//DataTable dtVacio1 = getvacio(1);
+			//DataTable dtVacio2 = getvacio(2);
+			//DataTable dtPie = getPie();
 			using (XLWorkbook woekBook = new XLWorkbook())
 			{
+				//woekBook.Worksheets.Add(dtEncabezado);
+				//woekBook.Worksheets.Add(dtVacio1);
 				woekBook.Worksheets.Add(dtArticulos);
+				//woekBook.Worksheets.Add(dtVacio2);
+				//woekBook.Worksheets.Add(dtPie);
 				using (MemoryStream stream = new MemoryStream())
 				{
 					woekBook.SaveAs(stream);
@@ -197,7 +205,25 @@ namespace MejjHonda.Controllers
 					table.AddCell(new Phrase(data["Tamanio"].ToString(), font2));
 					pdfRowIndex++;
 				}
+				document.Add(
+					new Phrase(
+						String.Concat("Solicitante: ", Session["Nombre"] != null ? Session["Nombre"].ToString() : ""),
+						font2
+					)
+				);
+				document.Add(
+					new Phrase(
+						"Fecha: " + DateTime.Now.ToString(),
+						font2
+					)
+				);
 				document.Add(table);
+				document.Add(
+					new Phrase(
+						"Empresa: MEJJ",
+						font2
+					)
+				);
 				document.Close();
 				document.CloseDocument();
 				document.Dispose();
@@ -230,6 +256,12 @@ namespace MejjHonda.Controllers
 			if (dtArticulos.Rows.Count > 0)
 			{
 				StringBuilder sbDocumentBody = new StringBuilder();
+				sbDocumentBody.Append(
+					String.Concat(
+						"Solicitante: ", 
+						Session["Nombre"] != null ? Session["Nombre"].ToString() : "")
+				);
+				sbDocumentBody.Append("Fecha: " + DateTime.Now.ToString());
 				sbDocumentBody.Append("<table width=\"100%\" style=\"background-color:#ffffff;\">");
 				if (dtArticulos.Rows.Count > 0)
 				{
@@ -255,6 +287,7 @@ namespace MejjHonda.Controllers
 					sbDocumentBody.Append("</table>");
 					sbDocumentBody.Append("</td></tr></table>");
 				}
+				sbDocumentBody.Append("Empresa: MEJJ");
 				Response.Clear();
 				Response.Buffer = true;
 				Response.AppendHeader("Content-Type", "application/msword");
@@ -296,6 +329,45 @@ namespace MejjHonda.Controllers
 				);
 			}
 			return dtArticulos;
+		}
+
+		private DataTable getEncabezado()
+		{
+			DataTable dtEncabezado = new DataTable("Encabezado");
+			dtEncabezado.Columns.AddRange(
+				new DataColumn[2] {
+					new DataColumn("Solicitante"),
+					new DataColumn("Fecha")
+				}
+			);
+			dtEncabezado.Rows.Add(
+				Session["Nombre"] != null ? Session["Nombre"].ToString() : "",
+				DateTime.Now.ToString()
+			);
+			return dtEncabezado;
+		}
+
+		private DataTable getvacio(int numero)
+		{
+			DataTable dtVacio = new DataTable("Vacio" + numero);
+			dtVacio.Columns.AddRange(
+				new DataColumn[1] {
+					new DataColumn("")
+				}
+			);
+			dtVacio.Rows.Add("");
+			return dtVacio;
+		}
+		private DataTable getPie()
+		{
+			DataTable dtPie = new DataTable("Pie");
+			dtPie.Columns.AddRange(
+				new DataColumn[1] {
+					new DataColumn("Empresa")
+				}
+			);
+			dtPie.Rows.Add("MEJJ");
+			return dtPie;
 		}
 	}
 }
