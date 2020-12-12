@@ -2111,8 +2111,11 @@
     <Content Include="Scripts\umd\popper-utils.min.js" />
     <Content Include="Scripts\umd\popper.js" />
     <Content Include="Scripts\umd\popper.min.js" />
+    <Content Include="Scripts\Views\ButtonValidation.js" />
     <Content Include="Scripts\Views\Factura.js" />
     <Content Include="Scripts\Views\Layout.js" />
+    <Content Include="Scripts\Views\Loading.js" />
+    <Content Include="Scripts\Views\Messages.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -2161,8 +2164,8 @@
     <Content Include="Views\Moneda\Index.cshtml" />
     <Content Include="Views\Login\ForgotPassword.cshtml" />
     <Content Include="Views\Login\ResetPassword.cshtml" />
-    <Content Include="Views\Shared\_LayoutLogin.cshtml" />
     <Content Include="Views\CalculoDeVenta\Index.cshtml" />
+    <Content Include="Views\Shared\_LoginLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
