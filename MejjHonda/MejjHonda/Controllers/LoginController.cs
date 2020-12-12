@@ -17,7 +17,7 @@ namespace MejjHonda.Controllers
         // GET: Login
         public ActionResult Index()
         {
-            if (Session["IdEmpleado"] == null)
+            if (Session["IdEmpleado"] == null )
             {
                 Session.Abandon();
             }
