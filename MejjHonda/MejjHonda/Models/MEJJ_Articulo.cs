@@ -30,16 +30,17 @@ namespace MejjHonda.Models
         public string Descripcion { get; set; }
         [Required(ErrorMessage = "Este campo es nesesario")]
         [DisplayName("Modelo")]
-        [StringLength(50, ErrorMessage = "Máximo 10 dígitos")]
+        [StringLength(50, ErrorMessage = "Máximo 50 dígitos")]
         public string Modelo { get; set; }
         [Range(0, int.MaxValue, ErrorMessage = "Solo números")]
         public Nullable<decimal> Precio { get; set; }
         [Required(ErrorMessage = "Este campo es nesesario")]
-        [StringLength(10, ErrorMessage = "Máximo 10 dígitos")]
+        [StringLength(50, ErrorMessage = "Máximo 50 dígitos")]
         public string Color { get; set; }
         [Required(ErrorMessage = "Este campo es nesesario")]
         [DisplayName("Tamaño")]
-        public string Tamanio { get; set; }
+		[StringLength(50, ErrorMessage = "Máximo 50 dígitos")]
+		public string Tamanio { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MEJJ_FacturaDeta> MEJJ_FacturaDeta { get; set; }

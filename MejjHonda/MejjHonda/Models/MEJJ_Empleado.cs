@@ -24,7 +24,7 @@ namespace MejjHonda.Models
     
         public int IdEmpleado { get; set; }
         [Required(ErrorMessage = "Este campo es nesesario")]
-        [StringLength(15, ErrorMessage = "Máximo 15 dígitos")]
+        [StringLength(50, ErrorMessage = "Máximo 50 dígitos")]
         public string Nombre { get; set; }
         [Required(ErrorMessage = "Este campo es nesesario")]
         [Range(0, int.MaxValue, ErrorMessage = "Solo números")]
@@ -48,7 +48,8 @@ namespace MejjHonda.Models
         [Required(ErrorMessage = "Este campo es nesesario")]
         [DataType(DataType.Password)]
         [DisplayName("Contraseña")]
-        public string Contraseña { get; set; }
+		[StringLength(16, ErrorMessage = "Máximo 16 dígitos")]
+		public string Contraseña { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MEJJ_FacturaEnca> MEJJ_FacturaEnca { get; set; }
