@@ -122,11 +122,18 @@ namespace MejjHonda.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
+            try { 
             MEJJ_Cliente mEJJ_Cliente = db.MEJJ_Cliente.Find(id);
             db.MEJJ_Cliente.Remove(mEJJ_Cliente);
             db.SaveChanges();
             TempData["type"] = "success";
             TempData["message"] = "Se elimino exitosamente";
+
+            }catch (Exception ex)
+            {
+                TempData["type"] = "error";
+                TempData["message"] = "Este valor no se puede eliminar";
+            }
             return RedirectToAction("Index");
         }
 

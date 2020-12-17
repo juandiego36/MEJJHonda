@@ -12,6 +12,8 @@ using ClosedXML.Excel;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
 using MejjHonda.Models;
+using System.Data.Entity.Validation;
+using System.Data.SqlClient;
 
 namespace MejjHonda.Controllers
 {
@@ -122,12 +124,22 @@ namespace MejjHonda.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            MEJJ_Articulo mEJJ_Articulo = db.MEJJ_Articulo.Find(id);
-            db.MEJJ_Articulo.Remove(mEJJ_Articulo);
-            db.SaveChanges();
-            TempData["type"] = "success";
-            TempData["message"] = "Se elimino exitosamente";
+            try
+            {
+                MEJJ_Articulo mEJJ_Articulo = db.MEJJ_Articulo.Find(id);
+                db.MEJJ_Articulo.Remove(mEJJ_Articulo);
+                db.SaveChanges();
+                TempData["type"] = "success";
+                TempData["message"] = "Se elimino exitosamente";
+            }
+            catch (Exception ex)
+            {
+                TempData["type"] = "error";
+                TempData["message"] = "Este valor no se puede eliminar";
+            }
+
             return RedirectToAction("Index");
+
         }
 
         protected override void Dispose(bool disposing)

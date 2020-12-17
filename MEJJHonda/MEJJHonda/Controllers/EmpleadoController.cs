@@ -127,32 +127,7 @@ namespace MejjHonda.Controllers
         }
 
         // GET: Empleado/Delete/5
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            MEJJ_Empleado mEJJ_Empleado = db.MEJJ_Empleado.Find(id);
-            if (mEJJ_Empleado == null)
-            {
-                return HttpNotFound();
-            }
-            return View(mEJJ_Empleado);
-        }
-
-        // POST: Empleado/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            MEJJ_Empleado mEJJ_Empleado = db.MEJJ_Empleado.Find(id);
-            db.MEJJ_Empleado.Remove(mEJJ_Empleado);
-            db.SaveChanges();
-            TempData["type"] = "success";
-            TempData["message"] = "Se elimino exitosamente";
-            return RedirectToAction("Index");
-        }
+     
 
         protected override void Dispose(bool disposing)
         {

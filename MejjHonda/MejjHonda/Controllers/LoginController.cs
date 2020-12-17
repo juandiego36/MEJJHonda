@@ -31,6 +31,7 @@ namespace MejjHonda.Controllers
             using (MejjHondaEntities db = new MejjHondaEntities()) {
                 
                 var empleadoDetails = db.MEJJ_Empleado.Where(x => x.Mail == empleadoModel.Mail).FirstOrDefault();
+                db.Dispose();
                 if (empleadoDetails == null) {
                     TempData["type"] = "error";
                     TempData["message"] = "Contraseña o correo incorrectos";
@@ -80,6 +81,7 @@ namespace MejjHonda.Controllers
                     empleado.Codigo_Contrasena = resetCode;
                     db.Configuration.ValidateOnSaveEnabled = false;
                     db.SaveChanges();
+                    db.Dispose();
                     TempData["type"] = "success";
                     TempData["message"] = "Se envio el correo a su cuenta";
                     SendVerificationEmail(email, resetCode);
@@ -163,6 +165,7 @@ namespace MejjHonda.Controllers
                     user.Contraseña = Crypto.Hash(model.NewPassword);
                     user.Codigo_Contrasena = "";
                     dc.SaveChanges();
+                    dc.Dispose();
                     TempData["type"] = "success";
                     TempData["message"] = "Su contraseña se cambio exitosamente";
                 }
