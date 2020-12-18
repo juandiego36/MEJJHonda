@@ -22,11 +22,21 @@ namespace MejjHonda.Controllers
         // GET: Cliente
         public ActionResult Index(String busqueda)
         {
-            return View(
-				!String.IsNullOrEmpty(busqueda) ? 
-					db.MEJJ_Cliente.Where(cliente => cliente.Nombre.Contains(busqueda)).ToList()
-				: db.MEJJ_Cliente.ToList()
-			);
+            var lista = new List<MejjHonda.Models.MEJJ_Cliente>();
+
+            if (busqueda == null || busqueda == ""){
+                lista = db.MEJJ_Cliente.ToList();
+
+            }else{
+                lista = db.MEJJ_Cliente.Where(cliente => cliente.Nombre.Contains(busqueda) || cliente.Cedula.Contains(busqueda) || cliente.Telefono.Contains(busqueda)).ToList();
+
+                if (lista.Count == 0) {
+                    TempData["type"] = "error";
+                    TempData["message"] = "No encontró el cliente";
+                    lista = db.MEJJ_Cliente.ToList();
+                };
+            }
+            return View(lista);
         }
 
         // GET: Cliente/Details/5
