@@ -24,7 +24,7 @@ namespace MejjHonda.Controllers
         {
             return View(
 				!String.IsNullOrEmpty(busqueda) ? 
-					db.MEJJ_Cliente.Where(cliente => cliente.Nombre.Contains(busqueda)).ToList()
+					db.MEJJ_Cliente.Where(cliente => cliente.Nombre.Contains(busqueda) || cliente.Cedula.Contains(busqueda)).ToList()
 				: db.MEJJ_Cliente.ToList()
 			);
         }
