@@ -32,7 +32,7 @@ namespace MejjHonda.Controllers
 
                 if (lista.Count == 0) {
                     TempData["type"] = "error";
-                    TempData["message"] = "No encontró el cliente, se muestran todos";
+                    TempData["message"] = "No encontró el cliente";
                     lista = db.MEJJ_Cliente.ToList();
                 };
             }
