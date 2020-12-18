@@ -55,8 +55,7 @@ namespace MejjHonda.Controllers
         }
 
         public ActionResult LogOut() {
-            Response.Cache.SetCacheability(HttpCacheability.NoCache);
-            Response.Cache.SetExpires(DateTime.Now); //or a date much earlier
+
             FormsAuthentication.SignOut();
             Session.Abandon();
             return RedirectToAction("Index");
