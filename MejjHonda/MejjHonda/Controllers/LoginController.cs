@@ -55,15 +55,11 @@ namespace MejjHonda.Controllers
         }
 
         public ActionResult LogOut() {
-            if (Session["IdEmpleado"] != null)
-            {
-                Session.Abandon();
-                return RedirectToAction("Index");
-            }
-            else {
-                return RedirectToAction("Index", "Login");
-            }
-
+            Response.Cache.SetCacheability(HttpCacheability.NoCache);
+            Response.Cache.SetExpires(DateTime.Now); //or a date much earlier
+            FormsAuthentication.SignOut();
+            Session.Abandon();
+            return RedirectToAction("Index");
 
         }
 
