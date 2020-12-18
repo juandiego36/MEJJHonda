@@ -8,6 +8,7 @@ using System.Net;
 using System.Web.Mvc;
 using MejjHonda.Models;
 
+
 namespace MejjHonda.Controllers{
 
     public class FacturaEncaController : Controller{
@@ -35,7 +36,7 @@ namespace MejjHonda.Controllers{
         }
         
         public ActionResult Create(){
-            ViewBag.IdCliente = new SelectList(db.MEJJ_Cliente, "IdCliente", "Nombre");
+            ViewBag.Clientes = db.MEJJ_Cliente.ToList();
             ViewBag.IdEmpleado = new SelectList(db.MEJJ_Empleado, "IdEmpleado", "Nombre");
             ViewBag.IdMoneda = new SelectList(db.MEJJ_Moneda, "Codigo", "Nombre");
             ViewBag.Articulos = db.MEJJ_Articulo.ToList();

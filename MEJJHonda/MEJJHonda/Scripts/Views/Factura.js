@@ -1,9 +1,16 @@
-﻿
+﻿var idCliente = 0;
 var contador = 0;
 var subTotal = 0;
 var impuesto = 0;
 var total = 0;
 var listaArticulos = [];
+
+function SeleccionaCliente(id, cedula, nombre) {
+    $("#clientesModal").modal('hide');
+    idCliente = id;
+    document.getElementById('CedulaCliente').value = cedula;
+    document.getElementById('NombreCliente').value = nombre;
+}
 
 function SeleccionaArticulo(id, descripcion, precio) {
     $("#articulosModal").modal('hide');
@@ -98,6 +105,9 @@ function Registrar() {
     if (listaArticulos.length === 0) {
         toastr.error("La factura no tiene detalles");
     } else {
+        if (idCliente === 0) {
+            toastr.error("La factura no tiene un cliente");
+        } else {
         var detalles = [];
         $.each(listaArticulos, function (index, campo) {
             detalles.push({
@@ -111,8 +121,6 @@ function Registrar() {
                 "Impuesto": campo.Impuesto
             });
         });
-
-    var idCliente = document.getElementById("idCliente").options[document.getElementById("idCliente").selectedIndex].value;
     var observacion = document.getElementById("observacion").value;  
     
         var encabezado = {
@@ -139,7 +147,7 @@ function Registrar() {
             });
         location.reload();
     }
-
+    }
     
 }
 
