@@ -16,14 +16,17 @@
 <br />
 <table class="table">
     <tr>
-        <th>
+        <th style="width: 10%">
             @Html.DisplayNameFor(model => model.Fecha)
         </th>
-        <th>
+        <th style="width:40%">
             @Html.DisplayNameFor(model => model.Observacion)
         </th>
-        <th>
-        Opciones
+        <th style="width:30%">
+            @Html.DisplayNameFor(model => model.MEJJ_Cliente.Nombre)
+        </th>
+        <th style="width:30%">
+            Opciones
         </th>
     </tr>
 
@@ -35,9 +38,12 @@
         <td>
             @Html.DisplayFor(modelItem => item.Observacion)
         </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MEJJ_Cliente.Nombre)
+        </td>
 
         <td>
-            @Html.ActionLink(" ", "Details", new { id = item.IdFacturaE }, new { @class = "btn btn-info fas fa-fw fa-eye", title = "Ver", @style= "width:20%" })
+            @Html.ActionLink(" ", "Details", new { id = item.IdFacturaE }, new { @class = "btn btn-info fas fa-fw fa-eye", title = "Ver", @style = "width:20%" })
 
         </td>
     </tr>

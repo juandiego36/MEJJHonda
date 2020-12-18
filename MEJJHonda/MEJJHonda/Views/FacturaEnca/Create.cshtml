@@ -85,7 +85,7 @@
                                                 <td>@item.Cedula</td>
                                                 <td>@item.Nombre</td>
                                                 <td>
-                                                    <a class="btn btn-outline-info" onclick='SeleccionaCliente("@(item.IdCliente)" , "@(item.Cedula)", "@(item.Nombre)");'>
+                                                    <a class="btn btn-outline-info" onclick='SeleccionaCliente("@(item.IdCliente)" , "@(item.Cedula)", "@(item.Nombre)");' title="Seleccionar cliente">
                                                         <i class="fas fa-fw fa-check"></i>
                                                     </a>
 
@@ -200,7 +200,7 @@
                                             <td>@item.Descripcion</td>
                                             <td>@item.Precio</td>
                                             <td>
-                                                <a class="btn btn-outline-info" onclick='SeleccionaArticulo("@(item.IdArticulo)" , "@(item.Descripcion)", "@(item.Precio)");'>
+                                                <a class="btn btn-outline-info" onclick='SeleccionaArticulo("@(item.IdArticulo)" , "@(item.Descripcion)", "@(item.Precio)");' title="Seleccionar artículo">
                                                     <i class="fas fa-fw fa-check"></i>
                                                 </a>
 
