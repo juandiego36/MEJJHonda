@@ -40,7 +40,7 @@ namespace MejjHonda.Models
         [DisplayName("Días de crédito ")]
         public Nullable<int> DiasCredito { get; set; }
         [Required(ErrorMessage = "Este campo es nesesario")]
-        [StringLength(15, ErrorMessage = "Máximo 15 dígitos")]
+        [StringLength(50, ErrorMessage = "Máximo 50 dígitos")]
         public string Nombre { get; set; }
         [EmailAddress(ErrorMessage = "Formato de correo inválido")]
         [StringLength(30, ErrorMessage = "Máximo 30 dígitos")]
