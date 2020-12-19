@@ -1,5 +1,10 @@
-﻿using System;
+﻿using iTextSharp.text;
+using iTextSharp.text.pdf;
+using MejjHonda.Models;
+using System;
 using System.Collections.Generic;
+using System.Data;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -134,6 +139,84 @@ namespace MejjHonda.Controllers
 				}
 			}
 			return View("Index", bancos);
+		}
+
+		public ActionResult ExportToPdf(int? id)
+		{
+			if (bancos.Count > 0)
+			{
+				int pdfRowIndex = 1;
+				string filename = "Calculo-De-Venta" + DateTime.Now.ToString("dd-MM-yyyy hh_mm_s_tt");
+				string filepath = Server.MapPath("\\") + "" + filename + ".pdf";
+				Document document = new Document(PageSize.A4, 5f, 5f, 10f, 10f);
+				FileStream fs = new FileStream(filepath, FileMode.Create);
+				PdfWriter writer = PdfWriter.GetInstance(document, fs);
+				document.Open();
+				Font font1 = FontFactory.GetFont(FontFactory.COURIER_BOLD, 10);
+				Font font2 = FontFactory.GetFont(FontFactory.COURIER, 8);
+				float[] columnDefinitionSize = { 5F, 2F, 2F, 2F, 2F };
+				PdfPTable table;
+				PdfPCell cell;
+				table = new PdfPTable(columnDefinitionSize)
+				{
+					WidthPercentage = 100
+				};
+				cell = new PdfPCell
+				{
+					BackgroundColor = new BaseColor(0xC0, 0xC0, 0xC0)
+				};
+				table.AddCell(new Phrase("Banco", font1));
+				table.AddCell(new Phrase("Tasa Fija", font1));
+				table.AddCell(new Phrase("Prima", font1));
+				table.AddCell(new Phrase("Plazo", font1));
+				table.AddCell(new Phrase("Cuota Mensual", font1));
+				table.HeaderRows = 1;
+				foreach (Banco banco in bancos)
+				{
+					table.AddCell(new Phrase(banco.name.ToString(), font2));
+					table.AddCell(new Phrase(banco.tasaFija.ToString(), font2));
+					table.AddCell(new Phrase(banco.prima.ToString(), font2));
+					table.AddCell(new Phrase(banco.plazo.ToString(), font2));
+					table.AddCell(new Phrase(banco.cuotaMensual.ToString(), font2));
+					pdfRowIndex++;
+				}
+				document.Add(
+					new Phrase(
+						String.Concat("Total o Pecio: ", bancos[0].precio.ToString()),
+						font2
+					)
+				);
+				document.Add(table);
+				document.Add(
+					new Phrase(
+						"Empresa: MEJJ",
+						font2
+					)
+				);
+				document.Close();
+				document.CloseDocument();
+				document.Dispose();
+				writer.Close();
+				writer.Dispose();
+				fs.Close();
+				fs.Dispose();
+				FileStream sourceFile = new FileStream(filepath, FileMode.Open);
+				float fileSize = 0;
+				fileSize = sourceFile.Length;
+				byte[] getContent = new byte[Convert.ToInt32(Math.Truncate(fileSize))];
+				sourceFile.Read(getContent, 0, Convert.ToInt32(sourceFile.Length));
+				sourceFile.Close();
+				Response.ClearContent();
+				Response.ClearHeaders();
+				Response.Buffer = true;
+				Response.ContentType = "application/pdf";
+				Response.AddHeader("Content-Length", getContent.Length.ToString());
+				Response.AddHeader("Content-Disposition", "attachment; filename=" + filename + ".pdf;");
+				Response.BinaryWrite(getContent);
+				Response.Flush();
+				Response.End();
+			}
+			return RedirectToAction("Index");
 		}
 	}
 }
