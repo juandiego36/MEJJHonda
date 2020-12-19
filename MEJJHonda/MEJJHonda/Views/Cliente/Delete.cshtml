@@ -5,54 +5,56 @@
     String styleColumn = "padding:0px;float:left";
 }
 <h3>Confirma que desea eliminar este cliente?</h3>
-<div>
-    <hr />
-    <div class="col-md-12" style=@styleColumn>
-        <div class="form-group col-md-6" style=@styleColumn>
-            @Html.LabelFor(model => model.Cedula, htmlAttributes: new { @class = "control-label col-md-2", @style = "font-weight: bold" })
-            <div class="col-md-10">
-                <label>@Html.DisplayFor(model => model.Cedula)</label>
-            </div>
-        </div>
-        <div class="form-group col-md-6" style=@styleColumn>
-            @Html.LabelFor(model => model.Telefono, htmlAttributes: new { @class = "control-label col-md-2", @style = "font-weight: bold" })
-            <div class="col-md-10">
-                <label>@Html.DisplayFor(model => model.Telefono)</label>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-12" style=@styleColumn>
-        <div class="form-group col-md-6" style=@styleColumn>
-            @Html.LabelFor(model => model.Direccion, htmlAttributes: new { @class = "control-label col-md-2", @style = "font-weight: bold" })
-            <div class="col-md-10">
-                <label>@Html.DisplayFor(model => model.Direccion)</label>
-            </div>
-        </div>
-        <div class="form-group col-md-6" style=@styleColumn>
-            @Html.LabelFor(model => model.DiasCredito, htmlAttributes: new { @class = "control-label col-md-2", @style = "font-weight: bold" })
-            <div class="col-md-10">
-                <label>@Html.DisplayFor(model => model.DiasCredito)</label>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-12" style=@styleColumn>
-        <div class="form-group col-md-6" style=@styleColumn>
-            @Html.LabelFor(model => model.Nombre, htmlAttributes: new { @class = "control-label col-md-2", @style = "font-weight: bold" })
-            <div class="col-md-10">
-                <label>@Html.DisplayFor(model => model.Nombre)</label>
-            </div>
-        </div>
-        <div class="form-group col-md-6" style=@styleColumn>
-            @Html.LabelFor(model => model.Mail, htmlAttributes: new { @class = "control-label col-md-2", @style = "font-weight: bold" })
-            <div class="col-md-10">
-                <label>@Html.DisplayFor(model => model.Mail)</label>
-            </div>
-        </div>
-    </div>
+<div style="display:flex">
+
     @using (Html.BeginForm())
     {
         @Html.AntiForgeryToken()
-        <div class="form-group col-md-12" style=@styleColumn>
+        <hr />
+        <div class="col-md-12" style=@styleColumn>
+            <div class="form-group col-md-6" style=@styleColumn>
+                @Html.LabelFor(model => model.Cedula, htmlAttributes: new { @class = "control-label col-md-2", @style = "font-weight: bold" })
+                <div class="col-md-10">
+                    <label>@Html.DisplayFor(model => model.Cedula)</label>
+                </div>
+            </div>
+            <div class="form-group col-md-6" style=@styleColumn>
+                @Html.LabelFor(model => model.Telefono, htmlAttributes: new { @class = "control-label col-md-2", @style = "font-weight: bold" })
+                <div class="col-md-10">
+                    <label>@Html.DisplayFor(model => model.Telefono)</label>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12" style=@styleColumn>
+            <div class="form-group col-md-6" style=@styleColumn>
+                @Html.LabelFor(model => model.Direccion, htmlAttributes: new { @class = "control-label col-md-2", @style = "font-weight: bold" })
+                <div class="col-md-10">
+                    <label>@Html.DisplayFor(model => model.Direccion)</label>
+                </div>
+            </div>
+            <div class="form-group col-md-6" style=@styleColumn>
+                @Html.LabelFor(model => model.DiasCredito, htmlAttributes: new { @class = "control-label col-md-2", @style = "font-weight: bold" })
+                <div class="col-md-10">
+                    <label>@Html.DisplayFor(model => model.DiasCredito)</label>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12" style=@styleColumn>
+            <div class="form-group col-md-6" style=@styleColumn>
+                @Html.LabelFor(model => model.Nombre, htmlAttributes: new { @class = "control-label col-md-2", @style = "font-weight: bold" })
+                <div class="col-md-10">
+                    <label>@Html.DisplayFor(model => model.Nombre)</label>
+                </div>
+            </div>
+            <div class="form-group col-md-6" style=@styleColumn>
+                @Html.LabelFor(model => model.Mail, htmlAttributes: new { @class = "control-label col-md-2", @style = "font-weight: bold" })
+                <div class="col-md-10">
+                    <label>@Html.DisplayFor(model => model.Mail)</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group col-md-12 offset-md-11" style=@styleColumn>
             <button type="submit" title="Eliminar" class="fa-pull-right btn btn-danger fas fa-trash-alt"></button>
             @Html.ActionLink(" ", "Index", null, new { @class = "fa-pull-right btn btn-info far fa-arrow-alt-circle-left", @style = "margin-right:10px", title = "Atrás" })
         </div>
