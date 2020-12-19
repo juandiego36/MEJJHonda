@@ -23,11 +23,23 @@ namespace MejjHonda.Controllers
         // GET: Empleado
         public ActionResult Index(String busqueda)
         {
-            return View(
-				!String.IsNullOrEmpty(busqueda) ?
-					db.MEJJ_Empleado.Where(empleado => empleado.Nombre.Contains(busqueda)).ToList()
-				: db.MEJJ_Empleado.ToList()
-			);
+			var empleados = new List<MEJJ_Empleado>();
+			if (!String.IsNullOrEmpty(busqueda))
+			{
+				empleados = db.MEJJ_Empleado.Where(empleado => empleado.Nombre.Contains(busqueda)).ToList();
+				if (empleados.Count == 0)
+				{
+					empleados = db.MEJJ_Empleado.ToList();
+					TempData["type"] = "error";
+					TempData["message"] = "No encontró empleados";
+				}
+			}
+			else
+			{
+				empleados = db.MEJJ_Empleado.ToList();
+			}
+			
+			return View(empleados);
         }
 
         // GET: Empleado/Details/5

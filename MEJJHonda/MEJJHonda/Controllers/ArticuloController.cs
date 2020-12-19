@@ -24,11 +24,23 @@ namespace MejjHonda.Controllers
         // GET: MEJJ_Articulo
         public ActionResult Index(String busqueda)
         {
-			return View(
-				!String.IsNullOrEmpty(busqueda) ? 
-					db.MEJJ_Articulo.Where(articulo => articulo.Descripcion.Contains(busqueda)).ToList()
-				: db.MEJJ_Articulo.ToList()
-			);
+			var articulos = new List<MEJJ_Articulo>();
+			if (!String.IsNullOrEmpty(busqueda))
+			{
+				articulos = db.MEJJ_Articulo.Where(articulo => articulo.Descripcion.Contains(busqueda)).ToList();
+				if (articulos.Count == 0)
+				{
+					articulos = db.MEJJ_Articulo.ToList();
+					TempData["type"] = "error";
+					TempData["message"] = "No encontró articulos";
+				}
+			}
+			else
+			{
+				articulos = db.MEJJ_Articulo.ToList();
+			}
+			
+			return View(articulos);
         }
 
         // GET: MEJJ_Articulo/Details/5
