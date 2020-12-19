@@ -13,6 +13,7 @@ using System.IO;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
 using System.Text;
+using System.Data.Entity.Validation;
 
 namespace MejjHonda.Controllers
 {
@@ -72,7 +73,8 @@ namespace MejjHonda.Controllers
         {
             if (ModelState.IsValid)
             {
-                var correoUnico = db.MEJJ_Empleado.Where(x => x.Mail == mEJJ_Empleado.Mail).FirstOrDefault();
+				mEJJ_Empleado.IdRol = 1;
+				var correoUnico = db.MEJJ_Empleado.Where(x => x.Mail == mEJJ_Empleado.Mail).FirstOrDefault();
                 if (correoUnico != null)
                 {
                     mEJJ_Empleado.LoginErrorMessage = "El correo ya esta en uso";
@@ -83,7 +85,7 @@ namespace MejjHonda.Controllers
                     mEJJ_Empleado.Contraseña = Crypto.Hash(mEJJ_Empleado.Contraseña);
                     db.MEJJ_Empleado.Add(mEJJ_Empleado);
                     db.SaveChanges();
-                    TempData["type"] = "success";
+					TempData["type"] = "success";
                     TempData["message"] = "Se creo exitosamente";
                     return RedirectToAction("Index");
                 }
@@ -117,6 +119,7 @@ namespace MejjHonda.Controllers
         {
             if (ModelState.IsValid)
             {
+				mEJJ_Empleado.IdRol = 1;
                 var correoUnico = db.MEJJ_Empleado.Where(x => x.Mail == mEJJ_Empleado.Mail && x.IdEmpleado != mEJJ_Empleado.IdEmpleado).FirstOrDefault();
                 if (correoUnico != null)
                 {

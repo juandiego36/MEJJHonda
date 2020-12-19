@@ -48,7 +48,7 @@ namespace MejjHonda.Models
         [Required(ErrorMessage = "Este campo es nesesario")]
         [DataType(DataType.Password)]
         [DisplayName("Contraseña")]
-		[StringLength(16, ErrorMessage = "Máximo 16 dígitos")]
+		[StringLength(100, ErrorMessage = "Máximo 100 dígitos")]
 		public string Contraseña { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
