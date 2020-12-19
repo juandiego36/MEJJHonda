@@ -22,11 +22,13 @@ namespace MejjHonda.Controllers{
 			{
 				facturas = db.MEJJ_FacturaEnca.Include(m => m.MEJJ_Cliente).Include(m => m.MEJJ_Empleado).Include(m => m.MEJJ_Moneda).Where(m => m.Observacion.Contains(busqueda) || m.MEJJ_Cliente.Nombre.Contains(busqueda)).ToList();
 			}
-			return View(
-				facturas.Count > 0 ?
-					facturas
-				: db.MEJJ_FacturaEnca.Include(m => m.MEJJ_Cliente).Include(m => m.MEJJ_Empleado).Include(m => m.MEJJ_Moneda).ToList()
-			);
+			if (facturas.Count == 0)
+			{
+				facturas = db.MEJJ_FacturaEnca.Include(m => m.MEJJ_Cliente).Include(m => m.MEJJ_Empleado).Include(m => m.MEJJ_Moneda).ToList();
+				TempData["type"] = "error";
+				TempData["message"] = "No encontró el cliente";
+			}
+			return View(facturas);
         }
       
         public ActionResult Details(int? id){
