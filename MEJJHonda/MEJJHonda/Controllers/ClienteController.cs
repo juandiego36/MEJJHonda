@@ -69,6 +69,7 @@ namespace MejjHonda.Controllers
         {
             if (ModelState.IsValid)
             {
+				mEJJ_Cliente.DiasCredito = 30;
                 db.MEJJ_Cliente.Add(mEJJ_Cliente);
                 db.SaveChanges();
                 TempData["type"] = "success";
