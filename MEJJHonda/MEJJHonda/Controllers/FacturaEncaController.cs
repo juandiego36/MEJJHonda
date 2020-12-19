@@ -15,9 +15,18 @@ namespace MejjHonda.Controllers{
 
         private MejjHondaEntities db = new MejjHondaEntities();
         
-        public ActionResult Index(){
-            var mEJJ_FacturaEnca = db.MEJJ_FacturaEnca.Include(m => m.MEJJ_Cliente).Include(m => m.MEJJ_Empleado).Include(m => m.MEJJ_Moneda);
-            return View(mEJJ_FacturaEnca.ToList());
+        public ActionResult Index(String busqueda)
+		{
+			var facturas = new List<MEJJ_FacturaEnca>();
+			if (!String.IsNullOrEmpty(busqueda))
+			{
+				facturas = db.MEJJ_FacturaEnca.Include(m => m.MEJJ_Cliente).Include(m => m.MEJJ_Empleado).Include(m => m.MEJJ_Moneda).Where(m => m.Observacion.Contains(busqueda) || m.MEJJ_Cliente.Nombre.Contains(busqueda)).ToList();
+			}
+			return View(
+				facturas.Count > 0 ?
+					facturas
+				: db.MEJJ_FacturaEnca.Include(m => m.MEJJ_Cliente).Include(m => m.MEJJ_Empleado).Include(m => m.MEJJ_Moneda).ToList()
+			);
         }
       
         public ActionResult Details(int? id){
